@@ -1,0 +1,144 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'pols/filter.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Расширенный поиск</title>
+</head>
+<body>
+    <div class="container p-0">
+        <header class="header row">
+            <div class="logo ps-0 col-1">
+                <a href="{% url 'index' %}"><img src="{% static 'pols/images/logo.png'%}"></a>
+                <!-- <img src="img/logo.png"> -->
+            </div>
+            <div class="title col-2">
+                <a class="title_label" href="{% url 'index' %}">HotelHaven</a>
+                <!-- <label class="title_label">HotelHaven</label> -->
+            </div>
+            <div class="qw col-3"></div>
+            <div class="favorites col-2 row">
+                <div class="qw col-3"></div>
+                <div class="col-1 p-0">
+                    <img src="{% static 'pols/images/heart_off.png'%}">
+                </div>
+                <div class="favo col-2 ps-3">
+                    <a href="{% url 'favorites' %}" class="favorites_label">Избранное</a>
+                </div>
+            </div>
+            <div class="suitcase col-2 row">
+                <div class="qw col-2"></div>
+                <div class="qw col-1">
+                    <img src="{% static 'pols/images/suitcase.png'%}">
+                </div>
+                <div class="favo ps-3 col">
+                    <a href="{% url 'travel_history' %}" class="suitcase_label">Мои поездки</a>
+                </div>
+            </div>
+            <div class="enter col">
+                <button class="enter_button">Личный кабинет</button>
+            </div>
+        </header>
+
+        <div class="container-fluid p-0">
+            <div class="search d-flex align-items-center">
+                <input class="city_input" type="text" placeholder="Город">
+                <input class="date" type="date" placeholder="Заезд">
+                <input class="date" type="date" placeholder="Выезд">
+                <input class="people" type="text" placeholder="2 взрослых">
+                <button class="search_button">Найти</button>
+            </div>
+        </div>
+        
+        <div class="container-fluid">
+            <div class="content row">
+                <div class="filter col-4">
+                    <label class="filter_label">Фильтры: </label>
+                    <br>
+                    <div class="filters">
+                        <label class="filter_price heading">Цена за 1 ночь</label>
+                        <div class="between row pt-2">
+                            <div class="from col">
+                                <input class="price_input" type="text" placeholder="от 0 ₽">
+                            </div>
+                            <div class="before col">
+                                <input class="price_input" type="text"  placeholder="до 100 000 ₽">
+                            </div>
+                        </div>
+                        <br>
+                        <label class="stars heading">Звёздность</label>
+                        <div class="cbx_stars pt-2">
+                            <input type="checkbox" name="star"> Без звёзд <br>
+                            <input type="checkbox" name="star"> 1 ★ <br>
+                            <input type="checkbox" name="star"> 2 ★★ <br>
+                            <input type="checkbox" name="star"> 3 ★★★ <br>
+                            <input type="checkbox" name="star"> 4 ★★★★ <br>
+                            <input type="checkbox" name="star"> 5 ★★★★★
+                        </div>
+                        <br>
+                        <label class="heading">Рейтинг</label> 
+                        <div class="rdo_reiting pt-2">
+                            <input type="radio" name="reiting"> С любым рейтингом <br>
+                            <input type="radio" name="reiting"> от 3 и выше <br>
+                            <input type="radio" name="reiting"> от 4 и выше <br>
+                            <input type="radio" name="reiting"> от 4.5 и выше
+                        </div>
+                        <!-- для доп фильтров -->
+                        <label class="more_filters_label heading pt-4">Фильтр</label> <br>
+                        <div class="more_filters pt-2">
+                            <input type="checkbox" name="more"> Категории
+                        </div>
+                        
+                        <!--  -->
+                        <br>
+                        <div class="apply_div">
+                            <button class="apply">Применить</button>
+                        </div>
+                    </div>   
+                </div>
+                
+                <div class="cards_number col-8 ps-4">
+                    <div class="custom-select-wrapper">
+                        <img class="select_img " src="{% static 'pols/images/sorting.png'%}">
+                        <select class="custom-select" id="primer"><span>qw</span>
+                            <option value="str1">Сначала недорогие</option>
+                            <option value="str2">Сначала дорогие</option>
+                        </select>
+                    </div>
+                    <!-- карточка номеров -->
+                    <div class="card">
+                        <div class="qw row">
+                            <div class="room_img col-5">
+                                <img src="{% static 'pols/images/room.png'%}">
+                            </div>
+                            <div class="info ps-0 col">
+                                <div class="title_room pt-3 row">
+                                    <label class="ps-0">Стандартный номер с одной двухспальной кроватью</label>
+                                </div>
+                                <div class="price_room pt-2">
+                                    <label>9 999 ₽</label>
+                                </div>
+                                <div class="hotel_and_button pt-2 row">
+                                    <div class="hotel col ps-0">
+                                        <a class="hotel_a " href="#">Отель Мандарин</a>
+                                    </div>
+                                    <div class="select_div col ">
+                                        <button class="select_room ">Выбрать</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="script" href="script.js">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

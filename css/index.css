@@ -105,16 +105,17 @@ a.suitcase_label{
   border: #fff;
 }
 .search_button{
-  font-size: 26px;
-  background-color: #DEDEDE;
+  font-size: 28px;
+  background-color: #0F4757;
   margin-left: 23px;
   height: 80px;
   width: 180px;
   border-radius: 10px;
-  border: #DEDEDE;
+  color: #fff;
+  border: #0F4757;
 }
 input{
-  font-size: 20px;
+  font-size: 22px !important;
 }
 input:focus {
   outline: #ffffff;
@@ -125,6 +126,9 @@ input:focus {
   /* padding-left: 25px; */
   font-family:Inter;
   font-weight: 350;
+}
+input.date{
+  color: #041f27;
 }
 
 .info{
@@ -153,30 +157,23 @@ input:focus {
 }
 
 .popular_cities{
-  
-  background-color: #F8F8F8;
+  background-color: #F5F5F5;
   /* background-color: #0F4757; */
   margin-top: 70px ;
-  height: 1010px;
-  border-radius: 30px;
+  border-radius: 5px;
   color: #013144;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
+  padding-bottom: 20px;
 }
 .popular_cities_label{
   font-size: 32px;
 }
 .cities{
-  /* width: 500px; */
   margin-left: 4px !important;
   margin-right: 10px !important;
-  /* background-color: aqua; */
 }
 .card{
-  /* border-radius: 0px; */
-  /* margin-left: 18px; */
-  /* margin-right: 18px; */
-  /* margin: 10px; */
-  margin-bottom: 18px;
+  margin: 10px;
   height: 425px;
   width: 310px;
 }
@@ -198,7 +195,10 @@ input:focus {
 .title_city_label{
   font-family:Inter;
   font-weight: 400;
-  font-size: 30px;
+  font-size: 28px;
+}
+.cards-wrapper{
+  display: flex;
 }
 
 /* модальное окно авторизации/регистрации */
@@ -279,3 +279,18 @@ a.login_button{
   cursor: pointer;
 }
 /* конец модального окна */
+
+body::-webkit-scrollbar {
+  width: 12px; /* ширина scrollbar */
+
+  }
+  
+  body::-webkit-scrollbar-track {
+  background: #F5F5F5; /* цвет дорожки */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+  background-color: #0F4757; /* цвет плашки */
+  border-radius: 20px; /* закругления плашки */
+  border: 1px solid white; /*padding вокруг плашки*/
+  }

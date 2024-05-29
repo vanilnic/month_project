@@ -48,8 +48,8 @@
         <div class="container-fluid p-0">
             <div class="search d-flex align-items-center">
                 <input class="city_input" type="text" placeholder="Город">
-                <input class="date" type="text" placeholder="Заезд">
-                <input class="date" type="text" placeholder="Выезд">
+                <input class="date" type="date" min="2024-05-08" max="2024-06-08" placeholder="Заезд">
+                <input class="date" type="date" min="2024-05-08" max="2024-06-08" placeholder="Выезд">
                 <input class="people" type="text" placeholder="2 взрослых">
                 <button class="search_button">Найти</button>
             </div>
@@ -93,119 +93,114 @@
         <div class="container-fluid p-0">
             <div class="popular_cities ">
                 <label class="popular_cities_label d-flex justify-content-center pt-3">Популярные направления</label>
-                <div class="cities row row-cols-4 pt-4">
-                    <div class="qw col">
-                        <div class="card">
-                            <div class="qw_city_img">
-                                <img class="card-img-top" src="../img/Moscow.png">
-                            </div>
-                            <div class="price">
-                                <label class="price_label">от 2000₽/ночь</label>
-                            </div>
-                            <div class="title_city">
-                                <label class="title_city_label">Москва</label>
-                            </div>
+            <div id="carouselExample" class="carousel slide pt-4 p-3">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="cards-wrapper">
+                            <button class="card">
+                                <div class="qw_city_img pt-1">
+                                    <img class="card-img-top" src="../img/Moscow.png">
+                                </div>
+                                <div class="price">
+                                    <label class="price_label">от 2000₽/ночь</label>
+                                </div>
+                                <div class="title_city">
+                                    <label class="title_city_label">Москва</label>
+                                </div>
+                            </button>
+                            <button class="card">
+                                <div class="qw_city_img pt-1">
+                                    <img class="card-img-top" src="../img/Saint-Petersburg.png">
+                                </div>
+                                <div class="price">
+                                    <label class="price_label">от 1800₽/ночь</label>
+                                </div>
+                                <div class="title_city">
+                                    <label class="title_city_label">Санкт-Петербург</label>
+                                </div>
+                            </button>
+                            <button class="card">
+                                <div class="qw_city_img pt-1">
+                                    <img class="card-img-top" src="../img/Sochi.png">
+                                </div>
+                                <div class="price">
+                                    <label class="price_label">от 1500₽/ночь</label>
+                                </div>
+                                <div class="title_city">
+                                    <label class="title_city_label">Сочи</label>
+                                </div>
+                            </button>
+                            <button class="card">
+                                <div class="qw_city_img pt-1">
+                                    <img class="card-img-top" src="../img/Kazan.png">
+                                </div>
+                                <div class="price">
+                                    <label class="price_label">от 1900₽/ночь</label>
+                                </div>
+                                <div class="title_city">
+                                    <label class="title_city_label">Казань</label>
+                                </div>
+                            </button>
                         </div>
                     </div>
 
-                    <div class="qw col">
-                        <div class="card">
-                            <div class="qw_city_img">
-                                <img class="card-img-top" src="../img/Saint-Petersburg.png">
-                            </div>
-                            <div class="price">
-                                <label class="price_label">от 1800₽/ночь</label>
-                            </div>
-                            <div class="title_city">
-                                <label class="title_city_label">Санкт-Петербург</label>
-                            </div>
+                    <div class="carousel-item">
+                        <div class="cards-wrapper">
+                            <button class="card">
+                                <div class="qw_city_img pt-1">
+                                    <img class="card-img-top" src="../img/Anapa.png">
+                                </div>
+                                <div class="price">
+                                    <label class="price_label">от 1000₽/ночь</label>
+                                </div>
+                                <div class="title_city">
+                                    <label class="title_city_label">Анапа</label>
+                                </div>
+                            </button>
+                            <button class="card">
+                                <div class="qw_city_img pt-1">
+                                    <img class="card-img-top" src="../img/Rostov-on-Don.png">
+                                </div>
+                                <div class="price">
+                                    <label class="price_label">от 1300₽/ночь</label>
+                                </div>
+                                <div class="title_city">
+                                    <label class="title_city_label">Ростов-на-Дону</label>
+                                </div>
+                            </button>
+                            <button class="card">
+                                <div class="qw_city_img pt-1">
+                                    <img class="card-img-top" src="../img/Nizhniy_Novgorod.png">
+                                </div>
+                                <div class="price">
+                                    <label class="price_label">от 1200₽/ночь</label>
+                                </div>
+                                <div class="title_city">
+                                    <label class="title_city_label">Нижний Новгород</label>
+                                </div>
+                            </button>
+                            <button class="card">
+                                <div class="qw_city_img pt-1">
+                                    <img class="card-img-top" src="../img/Gelendzhik.png">
+                                </div>
+                                <div class="price">
+                                    <label class="price_label">от 1800₽/ночь</label>
+                                </div>
+                                <div class="title_city">
+                                    <label class="title_city_label">Геленджик</label>
+                                </div>
+                            </button>
                         </div>
                     </div>
-
-                    <div class="qw col">
-                        <div class="card">
-                            <div class="qw_city_img">
-                                <img class="card-img-top" src="../img/Sochi.png">
-                            </div>
-                            <div class="price">
-                                <label class="price_label">от 1500₽/ночь</label>
-                            </div>
-                            <div class="title_city">
-                                <label class="title_city_label">Сочи</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="qw col">
-                        <div class="card">
-                            <div class="qw_city_img">
-                                <img class="card-img-top" src="../img/Kazan.png">
-                            </div>
-                            <div class="price">
-                                <label class="price_label">от 1900₽/ночь</label>
-                            </div>
-                            <div class="title_city">
-                                <label class="title_city_label">Казань</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="qw col">
-                        <div class="card">
-                            <div class="qw_city_img">
-                                <img class="card-img-top" src="../img/Anapa.png">
-                            </div>
-                            <div class="price">
-                                <label class="price_label">от 1000₽/ночь</label>
-                            </div>
-                            <div class="title_city">
-                                <label class="title_city_label">Анапа</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="qw col">
-                        <div class="card">
-                            <div class="qw_city_img">
-                                <img class="card-img-top" src="../img/Rostov-on-Don.png">
-                            </div>
-                            <div class="price">
-                                <label class="price_label">от 1300₽/ночь</label>
-                            </div>
-                            <div class="title_city">
-                                <label class="title_city_label">Ростов-на-Дону</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="qw col">
-                        <div class="card">
-                            <div class="qw_city_img">
-                                <img class="card-img-top" src="../img/Nizhniy_Novgorod.png">
-                            </div>
-                            <div class="price">
-                                <label class="price_label">от 1200₽/ночь</label>
-                            </div>
-                            <div class="title_city">
-                                <label class="title_city_label">Нижний Новгород</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="qw col">
-                        <div class="card col">
-                            <div class="qw_city_img">
-                                <img class="card-img-top" src="../img/Gelendzhik.png">
-                            </div>
-                            <div class="price">
-                                <label class="price_label">от 1800₽/ночь</label>
-                            </div>
-                            <div class="title_city">
-                                <label class="title_city_label">Геленджик</label>
-                            </div>
-                        </div>
-                    </div>
-    
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Предыдущий</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Следующий</span>
+                </button>
                 </div>
             </div>
         </div>
@@ -213,7 +208,7 @@
 
 
 
-
+<!-- модальное окно -->
     <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal_window modal-content">

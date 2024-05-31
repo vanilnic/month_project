@@ -11,28 +11,22 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
-from configparser import ConfigParser
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-CURRENT_DIR = Path(__file__).resolve().parent
-BASE_DIR = CURRENT_DIR.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-config = ConfigParser()
-
-config.read(CURRENT_DIR / 'settings.ini/')
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config['PROJECT']['SECRET_KEY']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-)^80s1-10g0)=v8mewrqrj*)b09)k_j#ro=_)j(ux=ug7jg1+!'
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config['PROJECT'].getboolean('DEBUG')
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
-DOMAIN = config['PROJECT']['DOMAIN']
-SCHEME = config['PROJECT']['SCHEME']
 
 # Application definition
 
@@ -45,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pols.apps.PolsConfig'
 ]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -84,12 +76,8 @@ WSGI_APPLICATION = 'Hotel.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config['DATABASE']['ENGINE'],
-        'NAME': config['DATABASE']['NAME'],
-        'USER': config['DATABASE']['USER'],
-        'PASSWORD': config['DATABASE']['PASSWORD'],
-        'HOST': config['DATABASE']['HOST'],
-        'PORT': config['DATABASE']['PORT']
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -111,9 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-STATIC_URL = config['PROJECT']['STATIC_URL']
-MEDIA_URL = config['PROJECT']['MEDIA_URL']
 
 
 # Internationalization
@@ -137,7 +122,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = "pols.User"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

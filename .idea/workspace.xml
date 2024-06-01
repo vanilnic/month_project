@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74a5cefc-0097-4fae-8c15-b0f09e8a0fbf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Hotel/pols/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/Hotel/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/Hotel/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/favorites.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/favorites.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/filter.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/filter.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/history.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/history.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/favorites.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/favorites.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/filter.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/filter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="74a5cefc-0097-4fae-8c15-b0f09e8a0fbf" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +32,9 @@
     &quot;accountId&quot;: &quot;e0424a22-6e78-478a-9031-6c66356cdd6d&quot;
   }
 }</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
@@ -58,13 +44,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Merging main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Merging main",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

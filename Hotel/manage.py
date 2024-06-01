@@ -8,6 +8,8 @@ def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Hotel.settings')
     try:
+        import pymysql
+        pymysql.install_as_MySQLdb()
         from django.core.management import execute_from_command_line
     except ImportError as exc:
         raise ImportError(

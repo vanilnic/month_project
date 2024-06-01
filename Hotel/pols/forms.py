@@ -7,7 +7,11 @@ class SignUpForm(forms.Form):
     email = forms.EmailField(label='Email')
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
-    # def clean_username(self):
+class SignInForm(forms.Form):
+    email = forms.EmailField(label='Email')
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+
+# def clean_username(self):
     #     username = self.cleaned_data.get('username')
     #     User = get_user_model()
     #     if User.objects.filter(username=username).exists():

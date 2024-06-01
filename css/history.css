@@ -165,3 +165,35 @@ a.suitcase_label{
     border: none;
     
 }
+
+a{
+    color: #041F27 !important;
+    text-decoration: none;
+}
+
+/* hover кнопочек и ссылок*/
+button.enter_button:hover{
+    background-color: #e2e2e2;
+}
+button.replace_button:hover{
+    background-color: #0d3c49;
+}
+a.title_hotel:hover{
+    color: #2e6b7e !important;
+}
+/* конец hover */
+
+body::-webkit-scrollbar {
+    width: 12px; /* ширина scrollbar */
+  
+    }
+    
+    body::-webkit-scrollbar-track {
+    background: #F5F5F5; /* цвет дорожки */
+    }
+    
+    body::-webkit-scrollbar-thumb {
+    background-color: #0F4757; /* цвет плашки */
+    border-radius: 20px; /* закругления плашки */
+    border: 1px solid white; /*padding вокруг плашки*/
+    }

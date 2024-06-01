@@ -65,6 +65,8 @@ a.suitcase_label{
     margin-top: 60px;
 }
 .cities_div{
+    position: sticky;
+    top: 30px;
     margin-top: 105px;
     font-size: 24px;
     color: #041f27;
@@ -120,12 +122,12 @@ a{
 .img_heart {
     display: flex;
     justify-content: center;
-    height: 30px;
-    width: 30px;
+    height: 23px;
+    width: 50px !important;
     background-color: #fff;
     border-color: #fff;
     outline: none;
-    border: none;
+    border: none !important;
 }
 .img_heart:active{
     border-style: outset;
@@ -165,6 +167,7 @@ a{
     align-items: end;
 }
 .select_button{
+    font-size: 18px;
     background-color: #0F4757;
     border-radius: 30px;
     border-color: #0F4757;
@@ -178,3 +181,30 @@ a{
     border-style: outset;
     border: none;
 }
+
+/* hover кнопочек и ссылок*/
+button.enter_button:hover{
+    background-color: #e2e2e2;
+}
+button.select_button:hover{
+    background-color: #0d3c49;
+}
+a.city:hover{
+    color: #2e6b7e !important;
+}
+/* конец hover */
+
+body::-webkit-scrollbar {
+    width: 12px; /* ширина scrollbar */
+  
+    }
+    
+    body::-webkit-scrollbar-track {
+    background: #F5F5F5; /* цвет дорожки */
+    }
+    
+    body::-webkit-scrollbar-thumb {
+    background-color: #0F4757; /* цвет плашки */
+    border-radius: 20px; /* закругления плашки */
+    border: 1px solid white; /*padding вокруг плашки*/
+    }

@@ -1,5 +1,2 @@
-<<<<<<< HEAD
-venv/
-=======
-/venv
->>>>>>> 9978af15b593f4bea6e4f2937d2b8d605ff5506c
+./venv/
+

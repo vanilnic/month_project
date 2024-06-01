@@ -1,16 +1,50 @@
+from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect, reverse
+from .forms import SignUpForm
+from django import forms
 
 def index(request):
     return render(request, 'pols/index.html')
 
 def offers(request):
-    return render(request, 'pols/filter.html')
+    if request.method == 'POST':
+        user_form = SignUpForm
+        if user_form.is_valid:
+            email = request.POST.get('email')
+            password = request.POST.get('password')
+            password2 = request.POST.get('password2')
+
+            if password == password2:
+                User = get_user_model()
+                user = User.objects.create_user(email=email, password=password)
+            # profile = Profile.objects.create(user=user, email=email)
+            else:
+                return redirect('offers')
+        return redirect('index')
+    else:
+        return render(request, 'pols/filter.html')
 
 def favorites(request):
-    if request.method == 'GET':
-        return reverse('')
     return render(request, 'pols/favorites.html')
 
 def travel_history(request):
     return render(request, 'pols/history.html')
 
+def hotel(request):
+    return render(request, 'pols/hotel.html')
+
+def order(request):
+    return render(request, 'pols/making_an_order.html')
+
+def payments(request):
+    return render(request, 'pols/payments.html')
+
+def successful_payment(request):
+    return render(request, 'pols/successfully.html')
+
+# def registrarion(request):
+    # if request.method == 'POST':
+    #     user_form = SignUpForm
+    #     if user_form.is_valid():
+    #         user_form.save()
+    #     return redirect('index')

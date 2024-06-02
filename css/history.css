@@ -81,11 +81,21 @@ a.suitcase_label{
     margin-top: 45px;
     border-radius: 10px !important;
 }
-.image_number{
+/* .image_number{
     padding-left: 30px;
     padding-top: 23px;
     padding-bottom: 23px;
-}
+} */
+.otstup_card{
+    width: 380px;
+    padding-left: 20px;
+  }
+  .image_number{
+    height: 250px;
+    width: 360px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 .title_hotel{
     margin-top: 15px;
     font-size: 24px;

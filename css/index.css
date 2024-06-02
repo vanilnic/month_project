@@ -96,6 +96,17 @@ a.suitcase_label{
   border-radius: 5px;
   border: #fff;
 }
+.form-select {
+  padding-left: 25px !important;
+  color: #041F27 !important; 
+  width: 230px !important;
+  font-size: 22px !important;
+}
+select:focus{
+  border: none; 
+  border-color: #0F4757 !important;
+  box-shadow: 0 1px 1px #0F4757 inset, 0 0 8px #0F4757 !important;
+}
 .people{
   padding-left: 25px;
   margin-left: 23px;

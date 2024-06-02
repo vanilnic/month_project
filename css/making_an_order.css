@@ -204,7 +204,7 @@ li{
 .card_eat{
   margin-top: 60px;
   border-radius: 20px;
-  background-color: #F8F8F8;
+  border: #F5F5F5 3px solid;
   color: #041f27;
   padding-bottom: 15px !important;
 }
@@ -240,8 +240,7 @@ li{
   padding-bottom: 30px !important;
   margin-top: 60px;
   border-radius: 20px;
-  background-color: #F8F8F8;
-  color: #041f27;
+  border: #F5F5F5 3px solid;  color: #041f27;
   padding-bottom: 15px !important;
 }
 .client_info{
@@ -262,6 +261,7 @@ li{
   padding-left: 24px;
 }
 .input_info{
+  color: #041F27;
   border: #989898 2px solid;
   border-radius: 10px;
   height: 45px;
@@ -496,6 +496,11 @@ a.login_button{
 }
 /* конец модального */
 
+input.input_info{
+  outline: none;
+  padding-left: 10px;
+  font-size: 20px;
+}
 /* hover кнопочек и ссылок*/
 button.enter_button:hover{
   background-color: #e2e2e2;

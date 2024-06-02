@@ -48,9 +48,16 @@
         <div class="container-fluid p-0">
             <div class="search d-flex align-items-center">
                 <input class="city_input" type="text" placeholder="Город">
-                <input class="date" type="date" min="2024-05-08" max="2024-06-08" placeholder="Заезд">
-                <input class="date" type="date" min="2024-05-08" max="2024-06-08" placeholder="Выезд">
-                <input class="people" type="text" placeholder="2 взрослых">
+                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Заезд">
+                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Выезд">
+                <select class="form-select people" aria-label="Пример выбора по умолчанию">
+                    <option selected disabled>Гости</option>
+                    <option value="1">1 взрослый</option>
+                    <option value="2">2 взрослых</option>
+                    <option value="3">3 взрослых</option>
+                    <option value="4">4 взрослых</option>
+                  </select>
+                <!-- <input class="people" type="text" placeholder="2 взрослых"> -->
                 <button class="search_button">Найти</button>
             </div>
         </div>
@@ -102,10 +109,10 @@
                                     <img class="card-img-top" src="../img/Moscow.png">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 2000₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Москва</label>
+                                    <label class="title_city_label"><a href="#">Москва</a></label>
                                 </div>
                             </button>
                             <button class="card">
@@ -113,10 +120,10 @@
                                     <img class="card-img-top" src="../img/Saint-Petersburg.png">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1800₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Санкт-Петербург</label>
+                                    <label class="title_city_label"><a href="#">Санкт-Петербург</a></label>
                                 </div>
                             </button>
                             <button class="card">
@@ -124,10 +131,10 @@
                                     <img class="card-img-top" src="../img/Sochi.png">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1500₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Сочи</label>
+                                    <label class="title_city_label"><a href="#">Сочи</a></label>
                                 </div>
                             </button>
                             <button class="card">
@@ -135,10 +142,10 @@
                                     <img class="card-img-top" src="../img/Kazan.png">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1900₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Казань</label>
+                                    <label class="title_city_label"><a href="#">Казань</a></label>
                                 </div>
                             </button>
                         </div>
@@ -151,10 +158,10 @@
                                     <img class="card-img-top" src="../img/Anapa.png">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1000₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Анапа</label>
+                                    <label class="title_city_label"><a href="#">Анапа</a></label>
                                 </div>
                             </button>
                             <button class="card">
@@ -162,10 +169,10 @@
                                     <img class="card-img-top" src="../img/Rostov-on-Don.png">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1300₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Ростов-на-Дону</label>
+                                    <label class="title_city_label"><a href="#"Ростов-на-Дону></a></label>
                                 </div>
                             </button>
                             <button class="card">
@@ -173,10 +180,10 @@
                                     <img class="card-img-top" src="../img/Nizhniy_Novgorod.png">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1200₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Нижний Новгород</label>
+                                    <label class="title_city_label"><a href="#">Нижний Новгород</a></label>
                                 </div>
                             </button>
                             <button class="card">
@@ -184,10 +191,10 @@
                                     <img class="card-img-top" src="../img/Gelendzhik.png">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1800₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Геленджик</label>
+                                    <label class="title_city_label"><a href="#">Геленджик</a></label>
                                 </div>
                             </button>
                         </div>
@@ -314,6 +321,7 @@
       </div>
       <!-- конец окна -->
       <!-- <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Личный Кабинет</a> -->
+      <link rel="script" href="../js/script.js">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

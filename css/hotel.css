@@ -67,8 +67,8 @@ a.suitcase_label{
   font-weight: 350;
   }
 .card{
-    background-color: #F8F8F8 !important;
-    border-color: #F8F8F8 !important;
+    background-color: #F5F5F5 !important;
+    border-color: #F5F5F5 !important;
     border-radius: 30px !important;
     margin-top: 55px;
 }
@@ -151,8 +151,21 @@ a.suitcase_label{
   border: #DEDEDE;
 }
 input.search_input{
+  color: #041F27 !important;
   font-size: 20px;
 }
+.form-select {
+  padding-left: 25px !important;
+  color: #041F27 !important;
+  width: 230px !important;
+  font-size: 20px !important;
+}
+select:focus{
+  border: none; 
+  border-color: #0F4757 !important;
+  box-shadow: 0 1px 1px #0F4757 inset, 0 0 8px #0F4757 !important;
+}
+
 input.search_input:focus {
   outline: #ffffff;
   border-color: #ffffff;
@@ -164,65 +177,71 @@ input.search_input:focus {
   font-weight: 350;
 }
   
-.card{
-    color: #041F27 !important;
-    height: 250px;
-    border-radius: 20px !important;
+.card_number{
+  margin-top: 55px;
+  color: #041F27 !important;
+  border-radius: 10px !important;
+  border: #0F4757 1px solid;
+}
+.otstup_card{
+  width: 380px;
+  padding-left: 20px;
 }
 .image_room{
-    padding-left: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  height: 250px;
+  width: 360px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .number_info{
-    padding-left: 35px !important;
+  padding-left: 35px !important;
 }
 .number_title{
-    font-size: 22px;
-    font-weight: 400;
-    padding-top: 20px;
+  font-size: 22px;
+  font-weight: 400;
+  padding-top: 20px;
 }
 .s{
-    font-size: 18px;
-    margin-top: 24px;
+  font-size: 18px;
+  margin-top: 24px;
 }
 .beds_price{
-    font-size: 18px;
-    margin-top: 30px !important;
+  font-size: 18px;
+  margin-top: 30px !important;
 }
 .price{
-    font-size: 24px !important;
+  font-size: 24px !important;
 }
 .price_label{
-    display: flex;
-    justify-content: right;
-    padding-right: 25px !important;
+  display: flex;
+  justify-content: right;
+  padding-right: 25px !important;
 }
 .more{
-    font-size: 18px;
-    margin-top: 26px !important;
+  font-size: 18px;
+  margin-top: 20px !important;
 }
 .more_a{
-    display: flex;
-    justify-content: right;
-    padding-right: 35px !important;
-    padding-bottom: 15px;
+  display: flex;
+  justify-content: right;
+  padding-right: 35px !important;
+  padding-bottom: 15px;
 }
 .info{
-    margin-top: 80px;
-    padding-bottom: 30px;
+  margin-top: 80px;
+  padding-bottom: 30px;
 }
 .title_info{
-    font-size: 24px;
-    font-weight: 400;
+  font-size: 24px;
+  font-weight: 400;
 }
 .content_info{
-    margin-top: 10px;
-    font-size: 18px;
+  margin-top: 10px;
+  font-size: 18px;
 }
 .conveniences{
-    margin-top: 15px;
-    font-size: 20px !important;
+  margin-top: 15px;
+  font-size: 20px !important;
 }
 .similar{
   margin-top: 35px;
@@ -236,16 +255,17 @@ input.search_input:focus {
 }
 .similar_card{
   margin-top: 15px;
-  height: 70px !important;
+  /* height: 70px; */
+  width: 294px;
   border-radius: 10px !important;
   border: #DEDEDE 1px solid;
   background-color: #fff !important;
-  padding-bottom: 10px;
+  padding-bottom: 2px;
 }
 .image_hotel{
   padding-left: 12px;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 .title_hotel{
   padding-top: 6px;
@@ -485,6 +505,9 @@ button.replace_button:hover{
   background-color: #0d3c49;
 }
 a.more_a:hover{
+  color: #2e6b7e !important;
+}
+a.title_hotel_label:hover{
   color: #2e6b7e !important;
 }
 /* конец hover */

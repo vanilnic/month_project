@@ -48,9 +48,15 @@
         <div class="container-fluid p-0">
             <div class="search d-flex align-items-center">
                 <input class="city_input" type="text" placeholder="Город">
-                <input class="date" type="date" placeholder="Заезд">
-                <input class="date" type="date" placeholder="Выезд">
-                <input class="people" type="text" placeholder="2 взрослых">
+                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Заезд">
+                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Выезд">
+                <select class="form-select people" aria-label="Пример выбора по умолчанию">
+                    <option selected disabled>Гости</option>
+                    <option value="1">1 взрослый</option>
+                    <option value="2">2 взрослых</option>
+                    <option value="3">3 взрослых</option>
+                    <option value="4">4 взрослых</option>
+                  </select>
                 <button class="search_button">Найти</button>
             </div>
         </div>
@@ -106,6 +112,7 @@
                     <div class="custom-select-wrapper">
                         <img class="select_img " src="../img/sorting.png">
                         <select class="custom-select" id="primer"><span>qw</span>
+                            <option selected disabled>Сортировка</option>
                             <option value="str1">Сначала недорогие</option>
                             <option value="str2">Сначала дорогие</option>
                         </select>
@@ -114,7 +121,26 @@
                     <div class="card">
                         <div class="qw row">
                             <div class="room_img col-5">
-                                <img src="../img/room.png">
+                              <div class="otstup_card">
+                                <div id="carouselExampleIndicators" class="carousel slide">
+                                    <div class="carousel-indicators">
+                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                      <div class="carousel-item active">
+                                        <img class="image_room" src="../img/room.png">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img class="image_room" src="../img/room.png">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img class="image_room" src="../img/room.png">
+                                      </div>
+                                    </div>
+                                </div>
+                              </div>
                             </div>
                             <div class="info ps-0 col">
                                 <div class="title_room pt-3 row">
@@ -123,7 +149,7 @@
                                 <div class="price_room pt-2">
                                     <label>9 999 ₽</label>
                                 </div>
-                                <div class="hotel_and_button pt-2 row">
+                                <div class="hotel_and_button pt-4 row">
                                     <div class="hotel col ps-0">
                                         <a class="hotel_a " href="#">Отель Мандарин</a>
                                     </div>

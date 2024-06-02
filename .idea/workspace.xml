@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74a5cefc-0097-4fae-8c15-b0f09e8a0fbf" name="Changes" comment="" />
+    <list default="true" id="74a5cefc-0097-4fae-8c15-b0f09e8a0fbf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/images/add.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/images/heart_off_23.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/images/heart_on_23.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/favorites.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/favorites.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/filter.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/filter.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/history.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/history.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/hotel.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/hotel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/making_an_order.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/making_an_order.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/payments.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/payments.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/successfully.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/successfully.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/favorites.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/favorites.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/filter.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/filter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/hotel.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/hotel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/making_an_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/making_an_order.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,10 +67,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vanilnic\Documents\GitHub\month_project\Hotel\pols\static\pols\images" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

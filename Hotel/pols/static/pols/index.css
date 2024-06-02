@@ -96,6 +96,17 @@ a.suitcase_label{
   border-radius: 5px;
   border: #fff;
 }
+.form-select {
+  padding-left: 25px !important;
+  color: #041F27 !important; 
+  width: 230px !important;
+  font-size: 22px !important;
+}
+select:focus{
+  border: none; 
+  border-color: #0F4757 !important;
+  box-shadow: 0 1px 1px #0F4757 inset, 0 0 8px #0F4757 !important;
+}
 .people{
   padding-left: 25px;
   margin-left: 23px;
@@ -155,7 +166,9 @@ input.date{
   width: 350px;
   text-align: center;
 }
-
+.carousel-control-next, .carousel-control-prev {
+  width: 6% !important;
+}
 .popular_cities{
   background-color: #F5F5F5;
   /* background-color: #0F4757; */
@@ -173,7 +186,7 @@ input.date{
   margin-right: 10px !important;
 }
 .card{
-  margin: 5px;
+  margin: 10px;
   height: 425px;
   width: 310px;
 }
@@ -252,6 +265,80 @@ input.modal_input:focus{
   background-color: #0F4757;
   border-radius: 10px;
 }
+/* модалка авторизованного пользователя */
+.modal_header_auth{
+  margin-top: 20px !important;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.email_label{
+  font-size: 28px;
+  font-weight: 400;
+  color: #041F27;
+}
+.email{
+  font-size: 26px;
+  font-weight: 400;
+  color: #041F27;
+}
+.linked_cards{
+  font-size: 24px;
+  padding-left: 35px;
+  margin-top: 30px !important;
+}
+.card_card{
+  padding-left: 30px;
+  margin-top: 30px !important;
+}
+.card_bank{
+  border-radius: 5px;
+  color: #fff !important;
+  font-size: 16px;
+  height: 67px !important;
+  width: 120px;
+  background-color: #F08A48 !important;
+  border: none !important;
+}
+.number{
+  display: flex;
+  justify-content: right;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+.date_active{
+  display: flex;
+  justify-content: left;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+.btn_unite{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.untie_it{
+  color: #fff !important;
+  height: 45px;
+  width: 180px;
+  border-radius: 10px;
+  border: none;
+  background-color: #0F4757;
+  font-size: 20px;
+}
+.modal_logout_div{
+  margin-top: 50px;
+  padding-bottom: 10px;
+}
+.log_out_modal{
+  color: #fff;
+  font-size: 28px;
+  height: 65px;
+  width: 240px;
+  border: none;
+  background-color: #041F27;
+  border-radius: 10px;
+}
+/* конец авторизованной модалки */
 .reg_in_modal{
   color: #fff;
   font-size: 24px;
@@ -279,6 +366,13 @@ a.login_button{
   cursor: pointer;
 }
 /* конец модального окна */
+
+/* hover кнопочек и ссылок*/
+button.enter_button:hover{
+  background-color: #e2e2e2;
+}
+
+/* конец hover */
 
 body::-webkit-scrollbar {
   width: 12px; /* ширина scrollbar */

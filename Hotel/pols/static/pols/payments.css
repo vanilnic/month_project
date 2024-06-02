@@ -173,3 +173,10 @@ input.card_input:focus{
   border-radius: 15px;
   border: none;
 }
+/* hover кнопочек и ссылок*/
+
+button.pay_btn:hover{
+  background-color: #0d3c49;
+}
+
+/* конец hover */

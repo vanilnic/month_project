@@ -42,16 +42,22 @@
                 </div>
             </div>
             <div class="enter col">
-                <button class="enter_button" data-bs-toggle="modal" href="#exampleModalToggle">Личный кабинет</button>
+                <button class="enter_button" data-bs-toggle="modal" href="#exampleModalToggle3">Личный кабинет</button>
             </div>
         </header>
 
         <div class="container-fluid p-0">
             <form class="search d-flex align-items-center" method="get" action="{% url 'offers' %}">
                 <input class="city_input" type="text" placeholder="Город">
-                <input class="date" type="date" min="2024-05-08" max="2024-06-08" placeholder="Заезд">
-                <input class="date" type="date" min="2024-05-08" max="2024-06-08" placeholder="Выезд">
-                <input class="people" type="text" placeholder="2 взрослых">
+                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Заезд">
+                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Выезд">
+                <select class="form-select people" aria-label="Пример выбора по умолчанию">
+                    <option selected disabled>Гости</option>
+                    <option value="1">1 взрослый</option>
+                    <option value="2">2 взрослых</option>
+                    <option value="3">3 взрослых</option>
+                    <option value="4">4 взрослых</option>
+                  </select>
                 <button class="search_button">Найти</button>
             </form>
         </div>
@@ -104,10 +110,10 @@
                                     <img class="card-img-top" src="{% static 'pols/images/Moscow.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 2000₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Москва</label>
+                                    <label class="title_city_label"><a href="#">Москва</a></label>
                                 </div>
                             </button>
                             </form>
@@ -117,10 +123,10 @@
                                     <img class="card-img-top" src="{% static 'pols/images/Saint-Petersburg.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1800₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Санкт-Петербург</label>
+                                    <label class="title_city_label"><a href="#">Санкт-Петербург</a></label>
                                 </div>
                             </button>
                             </form>
@@ -130,10 +136,10 @@
                                     <img class="card-img-top" src="{% static 'pols/images/Sochi.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1500₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Сочи</label>
+                                    <label class="title_city_label"><a href="#">Сочи</a></label>
                                 </div>
                             </button>
                             </form>
@@ -143,10 +149,10 @@
                                     <img class="card-img-top" src="{% static 'pols/images/Kazan.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1900₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Казань</label>
+                                    <label class="title_city_label"><a href="#">Казань</a></label>
                                 </div>
                             </button>
                             </form>
@@ -161,10 +167,10 @@
                                     <img class="card-img-top" src="{% static 'pols/images/Anapa.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1000₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Анапа</label>
+                                    <label class="title_city_label"><a href="#">Анапа</a></label>
                                 </div>
                             </button>
                             </form>
@@ -174,10 +180,10 @@
                                     <img class="card-img-top" src="{% static 'pols/images/Rostov-on-Don.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1300₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Ростов-на-Дону</label>
+                                    <label class="title_city_label"><a href="#"Ростов-на-Дону></a></label>
                                 </div>
                             </button>
                             </form>
@@ -187,10 +193,10 @@
                                     <img class="card-img-top" src="{% static 'pols/images/Nizhniy_Novgorod.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1200₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Нижний Новгород</label>
+                                    <label class="title_city_label"><a href="#">Нижний Новгород</a></label>
                                 </div>
                             </button>
                             </form>
@@ -200,10 +206,10 @@
                                     <img class="card-img-top" src="{% static 'pols/images/Gelendzhik.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label">от 1800₽/ночь</label>
+                                    <label class="price_label"><a href="#">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label">Геленджик</label>
+                                    <label class="title_city_label"><a href="#">Геленджик</a></label>
                                 </div>
                             </button>
                             </form>
@@ -278,6 +284,55 @@
             </div>
             <div class="modal_footer d-flex justify-content-center">
               <label>Есть аккаунт? <a class="login_button" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Войти</a></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- окно авторизованного пользователя -->
+      <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal_window modal-content">
+
+            <div class="modal_header_auth">
+              <label class="email_label col">Почта:</label> <br>
+              <label class="email col ps-0">bikadog306@gmail.com</label>
+            </div>
+            <div class="modal-body">
+              <label class="linked_cards col">Привязанные карты</label>
+              <!-- сущ карта -->
+              <div class="card_card row">
+                <div class="col-5">
+                    <div class="card_bank ps-0">
+                        <div class="number">
+                            <label>..2029</label>
+                        </div>
+                        <div class="date_active">
+                            <label>19/02</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7 ps-0">
+                    <div class="btn_unite">
+                        <button class="untie_it">Отвязать</button>
+                    </div>
+                </div>
+              </div>
+              <!-- новая карта -->
+              <div class="card_card row">
+                <div class="col-5">
+                    <img src="{% static 'pols/images/add.png' %}">
+                </div>
+                <div class="col-7 ps-0">
+                    <div class="btn_unite">
+                        <button class="untie_it">Добавить карту</button>
+                    </div>
+                </div>
+              </div>
+              <!--  -->
+              <div class="modal_logout_div d-flex justify-content-center">
+                <button class="log_out_modal">Выйти</button>
+              </div>
             </div>
           </div>
         </div>

@@ -204,7 +204,7 @@ li{
 .card_eat{
   margin-top: 60px;
   border-radius: 20px;
-  background-color: #F8F8F8;
+  border: #F5F5F5 3px solid;
   color: #041f27;
   padding-bottom: 15px !important;
 }
@@ -232,7 +232,7 @@ li{
   font-size: 18px;
   border-radius: 10px;
   border: none;
-  background-color: #d9d9d9;
+  background-color: #ECECEC;
   width: 180px;
   height: 40px;
 }
@@ -240,8 +240,7 @@ li{
   padding-bottom: 30px !important;
   margin-top: 60px;
   border-radius: 20px;
-  background-color: #F8F8F8;
-  color: #041f27;
+  border: #F5F5F5 3px solid;  color: #041f27;
   padding-bottom: 15px !important;
 }
 .client_info{
@@ -262,6 +261,7 @@ li{
   padding-left: 24px;
 }
 .input_info{
+  color: #041F27;
   border: #989898 2px solid;
   border-radius: 10px;
   height: 45px;
@@ -335,7 +335,80 @@ li{
   border-radius: 20px;
   border: none;
 }
-
+/* модалка авторизованного пользователя */
+.modal_header_auth{
+  margin-top: 20px !important;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.email_label{
+  font-size: 28px;
+  font-weight: 400;
+  color: #041F27;
+}
+.email{
+  font-size: 26px;
+  font-weight: 400;
+  color: #041F27;
+}
+.linked_cards{
+  font-size: 24px;
+  padding-left: 35px;
+  margin-top: 30px !important;
+}
+.card_card{
+  padding-left: 30px;
+  margin-top: 30px !important;
+}
+.card_bank{
+  border-radius: 5px;
+  color: #fff !important;
+  font-size: 16px;
+  height: 67px !important;
+  width: 120px;
+  background-color: #F08A48 !important;
+  border: none !important;
+}
+.number{
+  display: flex;
+  justify-content: right;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+.date_active{
+  display: flex;
+  justify-content: left;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+.btn_unite{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.untie_it{
+  color: #fff !important;
+  height: 45px;
+  width: 180px;
+  border-radius: 10px;
+  border: none;
+  background-color: #0F4757;
+  font-size: 20px;
+}
+.modal_logout_div{
+  margin-top: 50px;
+  padding-bottom: 10px;
+}
+.log_out_modal{
+  color: #fff;
+  font-size: 28px;
+  height: 65px;
+  width: 240px;
+  border: none;
+  background-color: #041F27;
+  border-radius: 10px;
+}
+/* конец авторизованной модалки */
 /* Модальное окно */
 .close_close{
   padding-top: 10px;
@@ -422,3 +495,38 @@ a.login_button{
   cursor: pointer;
 }
 /* конец модального */
+
+input.input_info{
+  outline: none;
+  padding-left: 10px;
+  font-size: 20px;
+}
+/* hover кнопочек и ссылок*/
+button.enter_button:hover{
+  background-color: #e2e2e2;
+}
+button.eat_button:hover{
+  background-color: #e2e2e2;
+}
+button.button_finish:hover{
+  background-color: #0d3c49;
+}
+a.title_hotel_a:hover{
+  color: #2e6b7e !important;
+}
+/* конец hover */
+
+body::-webkit-scrollbar {
+  width: 12px; /* ширина scrollbar */
+
+  }
+  
+  body::-webkit-scrollbar-track {
+  background: #F5F5F5; /* цвет дорожки */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+  background-color: #0F4757; /* цвет плашки */
+  border-radius: 20px; /* закругления плашки */
+  border: 1px solid white; /*padding вокруг плашки*/
+  }

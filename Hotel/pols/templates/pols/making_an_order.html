@@ -27,7 +27,7 @@
                     <img src="{% static 'pols/images/heart_off.png'%}">
                 </div>
                 <div class="favo col-2 ps-3">
-                    <a href="{% url 'favorites' %}" class="favorites_label">Избранное</a>
+                    <a href="{% url 'favorite' title='order' %}" class="favorites_label">Избранное</a>
                 </div>
             </div>
             <div class="suitcase col-2 row">
@@ -36,11 +36,11 @@
                     <img src="{% static 'pols/images/suitcase.png'%}">
                 </div>
                 <div class="favo ps-3 col">
-                    <a href="{% url 'travel_history' %}" class="suitcase_label">Мои поездки</a>
+                    <a href="{% url 'travels_history' title='order' %}" class="suitcase_label">Мои поездки</a>
                 </div>
             </div>
             <div class="enter col">
-                <button class="enter_button" data-bs-toggle="modal" href="#exampleModalToggle">Личный кабинет</button>
+                <button class="enter_button" data-bs-toggle="modal" href="#exampleModalToggle{{ log_in_people }}">Личный кабинет</button>
             </div>
         </header>
 
@@ -49,7 +49,7 @@
                 <div class="main_inf col-8 p-0">
                     <div class="card_order">
                         <div class="title_hotel row">
-                            <a class="title_hotel_a" href="#">Отель Мандарин Москва</a>
+                            <a class="title_hotel_a" href="{% url 'hotel' %}">Отель Мандарин Москва</a>
                         </div>
                         <div class="info row">
                             <div class="title_hotel_info_number col-7">
@@ -274,17 +274,17 @@
         <div class="modal_header">
           <label class="titte_window">Авторизация</label>
         </div>
-        <div class="modal-body">
+        <form class="modal-body">
           <div class="email_div d-flex justify-content-center">
-            <input class="modal_input" type="email" placeholder="Электронная почта">
+            <input class="modal_input" type="email" placeholder="Электронная почта" name="email_aut" id="email_aut">
           </div>
           <div class="password_div d-flex justify-content-center">
-            <input class="modal_input" type="password" placeholder="Пароль">
+            <input class="modal_input" type="password" placeholder="Пароль" name="password_aut" id="password_aut">
           </div>
           <div class="modal_login_div d-flex justify-content-center">
-            <button class="log_in_modal">Войти</button>
+            <button class="log_in_modal" type="submit" name="login">Войти</button>
           </div>
-        </div>
+        </form>
         <div class="modal_footer d-flex justify-content-center">
           <label>Нет аккаунта? <a class="registr_button" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal"> Зарегистрироваться</a></label>
         </div>
@@ -297,20 +297,20 @@
         <div class="modal_header">
           <label class="titte_window">Регистрация</label>
         </div>
-        <div class="modal-body">
+        <form class="modal-body">
           <div class="email_div d-flex justify-content-center">
-            <input class="modal_input" type="email" placeholder="Электронная почта">
+            <input class="modal_input" type="email" placeholder="Электронная почта" name="email" id="email">
           </div>
           <div class="password_div d-flex justify-content-center">
-            <input class="modal_input" type="password" placeholder="Пароль">
+            <input class="modal_input" type="password" placeholder="Пароль" name="password" id="password">
           </div>
           <div class="password_div_2 d-flex justify-content-center">
-            <input class="modal_input" type="password" placeholder="Повторите пароль">
+            <input class="modal_input" type="password" placeholder="Повторите пароль" name="password2" id="password2">
           </div>
           <div class="modal_login_div d-flex justify-content-center">
-            <button class="reg_in_modal">Зарегистрироваться</button>
+            <button class="reg_in_modal" type="submit" name="register">Зарегистрироваться</button>
           </div>
-        </div>
+        </form>
         <div class="modal_footer d-flex justify-content-center">
           <label>Есть аккаунт? <a class="login_button" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Войти</a></label>
         </div>
@@ -325,7 +325,7 @@
 
         <div class="modal_header_auth">
           <label class="email_label col">Почта:</label> <br>
-          <label class="email col ps-0">bikadog306@gmail.com</label>
+          <label class="email col ps-0">{{user.email}}</label>
         </div>
         <div class="modal-body">
           <label class="linked_cards col">Привязанные карты</label>
@@ -359,9 +359,10 @@
             </div>
           </div>
           <!--  -->
-          <div class="modal_logout_div d-flex justify-content-center">
+          <form class="modal_logout_div d-flex justify-content-center" method="post" action="{% url 'logout' %}?next=/order">
+              {% csrf_token %}
             <button class="log_out_modal">Выйти</button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

@@ -29,7 +29,7 @@
                     <img src="{% static 'pols/images/heart_off.png'%}">
                 </div>
                 <div class="favo col-2 ps-3">
-                    <a href="{% url 'favorites' %}" class="favorites_label">Избранное</a>
+                    <a href="{% url 'favorite' title='offers' %}" class="favorites_label">Избранное</a>
                 </div>
             </div>
             <div class="suitcase col-2 row">
@@ -38,11 +38,11 @@
                     <img src="{% static 'pols/images/suitcase.png'%}">
                 </div>
                 <div class="favo ps-3 col">
-                    <a href="{% url 'travel_history' %}" class="suitcase_label">Мои поездки</a>
+                    <a href="{% url 'travels_history' title='offers' %}" class="suitcase_label">Мои поездки</a>
                 </div>
             </div>
             <div class="enter col">
-                <button class="enter_button" data-bs-toggle="modal" href="#exampleModalToggle">Личный кабинет</button>
+                <button class="enter_button" data-bs-toggle="modal" href="#exampleModalToggle{{ log_in_people }}">Личный кабинет</button>
             </div>
         </header>
 
@@ -233,7 +233,7 @@
 
         <div class="modal_header_auth">
           <label class="email_label col">Почта:</label> <br>
-          <label class="email col ps-0">bikadog306@gmail.com</label>
+          <label class="email col ps-0">{{user.email}}</label>
         </div>
         <div class="modal-body">
           <label class="linked_cards col">Привязанные карты</label>
@@ -267,9 +267,10 @@
             </div>
           </div>
           <!--  -->
-          <div class="modal_logout_div d-flex justify-content-center">
+          <form class="modal_logout_div d-flex justify-content-center" method="post" action="{% url 'logout' %}?next=/offers">
+              {% csrf_token %}
             <button class="log_out_modal">Выйти</button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

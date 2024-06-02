@@ -23,7 +23,7 @@
             <div class="qw col-1"></div>
             
             <div class="enter col">
-                <button class="enter_button"  onclick="window.history.back();">Назад</button>
+                <button class="enter_button" onclick="location.href='{% url title %}'">Назад</button>
             </div>
         </header>
 
@@ -71,7 +71,7 @@
                                         <label class="price_p">от 2000 ₽</label> <br>
                                         <label class="dop">Цена за ночь</label>
                                     </div>
-                                    <form class="select col" method="get">
+                                    <form class="select col" method="get" action="{% url 'hotel' %}">
                                         <button class="select_button" name="select_hotel">Выбрать</button>
                                     </form>
                                 </div>

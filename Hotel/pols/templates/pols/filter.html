@@ -119,25 +119,26 @@
                         </select>
                     </div>
                     <!-- карточка номеров -->
+                    {% for room in rooms %}
                     <div class="card">
                         <div class="qw row">
                             <div class="room_img col-5">
                                 <div class="otstup_card">
-                                <div id="carouselExampleIndicators" class="carousel slide">
+                                <div id="carouselExampleIndicators{{ room.id }}" class="carousel slide">
                                     <div class="carousel-indicators">
-                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                      <button type="button" data-bs-target="#carouselExampleIndicators{{ room.id }}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                      <button type="button" data-bs-target="#carouselExampleIndicators{{ room.id }}" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                      <button type="button" data-bs-target="#carouselExampleIndicators{{ room.id }}" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                     </div>
                                     <div class="carousel-inner">
                                       <div class="carousel-item active">
-                                        <img class="image_room" src="{% static 'pols/images/room.png'%}">
+                                        <img class="image_room" src="{{ room.img1 }}">
                                       </div>
                                       <div class="carousel-item">
-                                        <img class="image_room" src="{% static 'pols/images/room.png'%}">
+                                        <img class="image_room" src="{{ room.img2 }}">
                                       </div>
                                       <div class="carousel-item">
-                                        <img class="image_room" src="{% static 'pols/images/room.png'%}">
+                                        <img class="image_room" src="{{ room.img3 }}">
                                       </div>
                                     </div>
                                 </div>
@@ -145,22 +146,23 @@
                             </div>
                             <div class="info ps-0 col">
                                 <div class="title_room pt-3 row">
-                                    <label class="ps-0">Стандартный номер с одной двухспальной кроватью</label>
+                                    <label class="ps-0">{{ room.title }}</label>
                                 </div>
-                                <div class="price_room pt-4">
-                                    <label>9 999 ₽</label>
+                                <div class="price_room">
+                                    <label>{{ room.price_per_night }} ₽</label>
                                 </div>
                                 <div class="hotel_and_button pt-2 row">
                                     <div class="hotel col ps-0">
-                                        <a class="hotel_a " href="{% url 'hotel' %}">Отель Мандарин</a>
+                                        <a class="hotel_a " href="{% url 'hotel_id' room.hotel.id %}">{{ room.hotel.name }}</a>
                                     </div>
                                     <form class="select_div col " method="get" action="{% url 'order' %}">
-                                        <button class="select_room ">Выбрать</button>
+                                        <button class="select_room" >Выбрать</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                     <!--  -->
                 </div>
             </div>

@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74a5cefc-0097-4fae-8c15-b0f09e8a0fbf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/month_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/month_project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/favorites.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/favorites.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/Hotel/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/Hotel/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/migrations/0002_alter_user_managers_alter_user_username.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hotel/pols/static/pols/filter.css" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/static/pols/filter.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/filter.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/filter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/history.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/hotel.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/hotel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/making_an_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/making_an_order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hotel/pols/templates/pols/payments.html" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/templates/pols/payments.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotel/pols/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotel/pols/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel/pols/views.py" afterDir="false" />
     </list>
@@ -61,7 +61,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">

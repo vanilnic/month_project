@@ -49,16 +49,18 @@
         </header>
 
         <div class="container-fluid p-0">
+            <!-- карточка отеля  -->
+            {% for hotel in hotels %}
             <div class="card">
                 <div class="otstup p-4">
                     <div class="tite_address_favorites row">
                         <div class="col-11">
                             <div class="hotel_title">
-                                <label>Отель Мандарин Москва</label>
+                                <label>{{ hotel.name }}</label>
                             </div>
                             <div class="address">
                                 <img src="{% static 'pols/images/geo.png'%}">
-                                <label>Москва, Ольская улица, 23</label>
+                                <label>{{ hotel.address }}</label>
                             </div>
                         </div>
                         <div class="favorites_hotel col-1 pt-1">
@@ -68,23 +70,23 @@
                         <div class="container-fluid">
                             <div class="photoes_hotel row">
                                 <div class="main_img col-6">
-                                    <img class="photo_1" src="{% static 'pols/images/photo_hotel_1.png' %}">
+                                    <img class="photo_1" src="{{ hotel.img1 }}">
                                 </div>
                                 <div class="qw col-6">
                                     <div class="more_photo row">
                                         <div class="m_img col">
-                                            <img class="photo_2 go" src="{% static 'pols/images/photo_hotel_2.png' %}">
+                                            <img class="photo_2 go" src="{{ hotel.img2 }}">
                                         </div>
                                         <div class="m_img col">
-                                            <img class="photo_2 " src="{% static 'pols/images/photo_hotel_3.png' %}">
+                                            <img class="photo_2 " src="{{ hotel.img3 }}">
                                         </div>
                                     </div>
                                     <div class="more_photo_2 row">
                                         <div class="m_img col">
-                                            <img class="photo_2 go" src="{% static 'pols/images/photo_hotel_4.png' %}">
+                                            <img class="photo_2 go" src="{{ hotel.img4 }}">
                                         </div>
                                         <div class="m_img col">
-                                            <img class="photo_2" src="{% static 'pols/images/photo_hotel_5.png' %}">
+                                            <img class="photo_2" src="{{ hotel.img5 }}">
                                         </div>
                                     </div>
                                 </div>
@@ -93,6 +95,7 @@
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
 
         <div class="container-fluid">
@@ -112,15 +115,16 @@
                         <button class="search_button">Показать номера</button>
                     </div>
                     <!-- карточка номера -->
+                    {% for room in rooms %}
                     <div class="card_number">
                         <div class="row">
                             <div class="img col-5">
                                 <div class="otstup_card">
-                                    <div id="carouselExampleIndicators" class="carousel slide">
+                                    <div id="carouselExampleIndicators{{ room.id }}" class="carousel slide">
                                         <div class="carousel-indicators">
-                                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                          <button type="button" data-bs-target="#carouselExampleIndicators{{ room.id }}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                          <button type="button" data-bs-target="#carouselExampleIndicators{{ room.id }}" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                          <button type="button" data-bs-target="#carouselExampleIndicators{{ room.id }}" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                         </div>
                                         <div class="carousel-inner">
                                           <div class="carousel-item active">
@@ -138,7 +142,7 @@
                             </div>
                             <div class="number_info col-7">
                                 <div class="number_title">
-                                    <label>Семейный однокомнатный номер</label>
+                                    <label>{{ room.title }}</label>
                                 </div>
                                 <div class="s">
                                     <label>Площадь: 25м²</label>
@@ -146,10 +150,10 @@
                                 <div class="beds_price row">
                                     <div class="beds col-8">
                                         <label>В номере:</label> <br>
-                                        <label>4 основных места</label>
+                                        <label>{{ room.beds_amount }} основных места</label>
                                     </div>
                                     <div class="price col-4">
-                                        <label class="price_label">от 17 990 ₽</label>
+                                        <label class="price_label">от {{ room.price_per_night }} ₽</label>
                                     </div>
                                 </div>
                                 <div class="more row">
@@ -158,6 +162,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                     <!--  -->
                     
                     <div class="info">

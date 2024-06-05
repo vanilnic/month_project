@@ -1,6 +1,9 @@
 from django.contrib.auth import get_user_model, authenticate, login
 from django.shortcuts import render, redirect, reverse
+from django.views.generic import DetailView
+
 from .forms import SignUpForm, SignInForm
+from .models import *
 from django import forms
 
 def index(request, title='/'):
@@ -42,10 +45,13 @@ def index(request, title='/'):
         return render(request, 'pols/index.html')
 
 def offers(request):
+    rooms = Rooms.objects.all()
     log_in_people = 3
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/filter.html', {'log_in_people': log_in_people})
+            return render(request, 'pols/filter.html', {'log_in_people': log_in_people, 'rooms': rooms})
+        else:
+            return render(request, 'pols/filter.html', {'rooms': rooms})
 
     if request.method == 'POST':
         if 'register' in request.POST:
@@ -72,7 +78,7 @@ def offers(request):
                 user = authenticate(email=request.POST.get('email_aut'), password=request.POST.get('password_aut'))
                 if user is not None:
                     login(request,user)
-                    return render(request,'pols/filter.html', {'log_in_people': log_in_people})
+                    return render(request,'pols/filter.html', {'log_in_people': log_in_people, 'rooms': rooms})
                     # return redirect('index')
             else:
                 return redirect('offers')
@@ -95,11 +101,31 @@ def travel_history(request, title=None):
 
     return render(request, 'pols/history.html', {'title': title})
 
-def hotel(request):
+
+class PostDetailView(DetailView):
+    model = Hotel
+    context_object_name = 'object'
+    fields = '__all__'
+    template_name = 'pols/hotel.html'
+
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['hotels']=[self.get_object()]
+        return context
+
+    def get_object(self, queryset=None):
+        return Hotel.objects.get(id=self.kwargs['id_hotel_id'])
+
+def hotel(request, id_hotel_id=None):
+    hotels = Hotel.objects.all()
+    rooms = Rooms.objects.all()
+    # print(Rooms.objects.all()
     log_in_people = 3
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/hotel.html', {'log_in_people': log_in_people})
+            return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms})
+        else:
+            return render(request, 'pols/hotel.html', {'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms})
 
     if request.method == 'POST':
         if 'register' in request.POST:
@@ -115,7 +141,7 @@ def hotel(request):
                 # profile = Profile.objects.create(user=user, email=email)
                 else:
                     return redirect('hotel')
-            return redirect('hotel')
+            return redirect('hotel_id')
 
         elif 'login' in request.POST:
             user_form = SignInForm(data=request.POST)
@@ -124,10 +150,10 @@ def hotel(request):
                 user = authenticate(email=request.POST.get('email_aut'), password=request.POST.get('password_aut'))
                 if user is not None:
                     login(request,user)
-                    return render(request,'pols/hotel.html', {'log_in_people': log_in_people})
+                    return render(request,'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms})
                     # return redirect('index')
             else:
-                return redirect('hotel')
+                return redirect('hotel_id')
     else:
         return render(request, 'pols/hotel.html')
 

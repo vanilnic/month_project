@@ -1,17 +1,22 @@
 from django.contrib.auth import get_user_model, authenticate, login
 from django.shortcuts import render, redirect, reverse
 from django.views.generic import DetailView
-
+from datetime import datetime, timedelta
 from .forms import SignUpForm, SignInForm
 from .models import *
 from django import forms
 
 def index(request, title='/'):
+    arrival = datetime.now().strftime("%Y-%m-%d")
+    departure = (datetime.now() + timedelta(1)).strftime("%Y-%m-%d")
+    people = '1 взрослый'
     supet_title = '/'
     log_in_people = 3
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/index.html', {'log_in_people': log_in_people})
+            return render(request, 'pols/index.html', {'log_in_people': log_in_people, 'arrival': arrival, 'departure': departure, 'people': people})
+        else:
+            return render(request, 'pols/index.html',{'arrival': arrival, 'departure': departure, 'people': people})
 
     if request.method == 'POST':
         if 'register' in request.POST:
@@ -28,6 +33,7 @@ def index(request, title='/'):
                 else:
                     return redirect('index')
             return redirect('index')
+
         # else:
         #     return render(request, 'pols/filter.html')
 
@@ -40,16 +46,20 @@ def index(request, title='/'):
                     login(request, user)
                     return render(request, 'pols/index.html', {'log_in_people': log_in_people, 'supet_title': supet_title, 'title': title})
                     # return redirect('index')
+        elif 'search' in request.POST:
+            print('123')
+            redirect('offers')
 
     else:
-        return render(request, 'pols/index.html')
+        return render(request, 'pols/index.html', {'arrival': arrival, 'departure': departure, 'people': people})
 
-def offers(request):
+def offers(request, city, arrival, departure, people):
     rooms = Rooms.objects.all()
     log_in_people = 3
+    print(city)
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/filter.html', {'log_in_people': log_in_people, 'rooms': rooms})
+            return render(request, 'pols/filter.html', {'log_in_people': log_in_people, 'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'people':people})
         else:
             return render(request, 'pols/filter.html', {'rooms': rooms})
 
@@ -91,6 +101,7 @@ def favorites(request, title=None):
     if request.method == 'GET':
         if request.user.is_authenticated:
             return render(request, 'pols/favorites.html', {'title': title})
+        return redirect(request.META.get('HTTP_REFERER'))
 
     return render(request, 'pols/favorites.html', {'title': title})
 
@@ -98,6 +109,7 @@ def travel_history(request, title=None):
     if request.method == 'GET':
         if request.user.is_authenticated:
             return render(request, 'pols/history.html', {'title': title})
+        return redirect(request.META.get('HTTP_REFERER'))
 
     return render(request, 'pols/history.html', {'title': title})
 
@@ -117,8 +129,9 @@ class PostDetailView(DetailView):
         return Hotel.objects.get(id=self.kwargs['id_hotel_id'])
 
 def hotel(request, id_hotel_id=None):
-    hotels = Hotel.objects.all()
-    rooms = Rooms.objects.all()
+    hotels = Hotel.objects.all().filter(id=id_hotel_id)
+    rooms = Rooms.objects.all().filter(hotel=id_hotel_id)
+    print(hotels)
     # print(Rooms.objects.all()
     log_in_people = 3
     if request.method == 'GET':

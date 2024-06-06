@@ -358,36 +358,36 @@
           <label class="email col ps-0">{{user.email}}</label>
         </div>
         <div class="modal-body">
-          <label class="linked_cards col">Привязанные карты</label>
+<!--          <label class="linked_cards col">Привязанные карты</label>-->
           <!-- сущ карта -->
-          <div class="card_card row">
-            <div class="col-5">
-                <div class="card_bank ps-0">
-                    <div class="number">
-                        <label>..2029</label>
-                    </div>
-                    <div class="date_active">
-                        <label>19/02</label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-7 ps-0">
-                <div class="btn_unite">
-                    <button class="untie_it">Отвязать</button>
-                </div>
-            </div>
-          </div>
+<!--          <div class="card_card row">-->
+<!--            <div class="col-5">-->
+<!--                <div class="card_bank ps-0">-->
+<!--                    <div class="number">-->
+<!--                        <label>..2029</label>-->
+<!--                    </div>-->
+<!--                    <div class="date_active">-->
+<!--                        <label>19/02</label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-7 ps-0">-->
+<!--                <div class="btn_unite">-->
+<!--                    <button class="untie_it">Отвязать</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--          </div>-->
           <!-- новая карта -->
-          <div class="card_card row">
-            <div class="col-5">
-                <img src="{% static 'pols/images/add.png' %}">
-            </div>
-            <div class="col-7 ps-0">
-                <div class="btn_unite">
-                    <button class="untie_it">Добавить карту</button>
-                </div>
-            </div>
-          </div>
+<!--          <div class="card_card row">-->
+<!--            <div class="col-5">-->
+<!--                <img src="{% static 'pols/images/add.png' %}">-->
+<!--            </div>-->
+<!--            <div class="col-7 ps-0">-->
+<!--                <div class="btn_unite">-->
+<!--                    <button class="untie_it">Добавить карту</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--          </div>-->
           <!--  -->
           <form class="modal_logout_div d-flex justify-content-center" method="post" action="{% url 'logout' %}?next=/hotel">
               {% csrf_token %}

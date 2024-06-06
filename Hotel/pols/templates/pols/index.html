@@ -47,18 +47,19 @@
         </header>
 
         <div class="container-fluid p-0">
-            <form class="search d-flex align-items-center" method="get" action="{% url 'offers' %}">
-                <input class="city_input" type="text" placeholder="Город">
-                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Заезд">
-                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Выезд">
-                <select class="form-select people" aria-label="Пример выбора по умолчанию">
+            <form class="search d-flex align-items-center" method="post">
+                {% csrf_token %}
+                <input class="city_input" type="text" placeholder="Город" name="city">
+                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Заезд" name="arrival">
+                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Выезд" name="departure">
+                <select class="form-select people" aria-label="Пример выбора по умолчанию" name="people">
                     <option selected disabled>Гости</option>
                     <option value="1">1 взрослый</option>
                     <option value="2">2 взрослых</option>
                     <option value="3">3 взрослых</option>
                     <option value="4">4 взрослых</option>
                   </select>
-                <button class="search_button">Найти</button>
+                <button class="search_button" name="search" type="submit">Найти</button>
             </form>
         </div>
 
@@ -104,55 +105,55 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="cards-wrapper">
-                            <form action="{% url 'offers' %}" class="qw col" method="get">
+                            <form action="{% url 'offers_city' city='Москва' arrival=arrival departure=departure people=people %}" class="qw col" method="get">
                             <button class="card">
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Moscow.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label"><a href="{% url 'offers' %}">от 2000₽/ночь</a></label>
+                                    <label class="price_label"><a href="{% url 'offers_city' city='Москва' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label"><a href="{% url 'offers' %}">Москва</a></label>
+                                    <label class="title_city_label"><a href="{% url 'offers_city' city='Москва' arrival=arrival departure=departure people=people %}">Москва</a></label>
                                 </div>
                             </button>
                             </form>
-                            <form action="{% url 'offers' %}" class="qw col" method="get">
+                            <form action="{% url 'offers_city' city='Санкт-Петербург' arrival=arrival departure=departure people=people %}" class="qw col" method="get">
                             <button class="card">
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Saint-Petersburg.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label"><a href="{% url 'offers' %}">от 2000₽/ночь</a></label>
+                                    <label class="price_label"><a href="{% url 'offers_city' city='Санкт-Петербург' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label"><a href="{% url 'offers' %}">Санкт-Петербург</a></label>
+                                    <label class="title_city_label"><a href="{% url 'offers_city' city='Санкт-Петербург' arrival=arrival departure=departure people=people %}">Санкт-Петербург</a></label>
                                 </div>
                             </button>
                             </form>
-                            <form action="{% url 'offers' %}" class="qw col" method="get">
+                            <form action="{% url 'offers_city' city='Сочи' arrival=arrival departure=departure people=people %}" class="qw col" method="get">
                             <button class="card">
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Sochi.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label"><a href="{% url 'offers' %}">от 2000₽/ночь</a></label>
+                                    <label class="price_label"><a href="{% url 'offers_city' city='Сочи' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label"><a href="{% url 'offers' %}">Сочи</a></label>
+                                    <label class="title_city_label"><a href="{% url 'offers_city' city='Сочи' arrival=arrival departure=departure people=people %}">Сочи</a></label>
                                 </div>
                             </button>
                             </form>
-                            <form action="{% url 'offers' %}" class="qw col" method="get">
+                            <form action="{% url 'offers_city' city='Казань' arrival=arrival departure=departure people=people %}" class="qw col" method="get">
                             <button class="card">
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Kazan.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label"><a href="{% url 'offers' %}">от 2000₽/ночь</a></label>
+                                    <label class="price_label"><a href="{% url 'offers_city' city='Казань' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label"><a href="{% url 'offers' %}">Казань</a></label>
+                                    <label class="title_city_label"><a href="{% url 'offers_city' city='Казань' arrival=arrival departure=departure people=people %}">Казань</a></label>
                                 </div>
                             </button>
                             </form>
@@ -161,55 +162,55 @@
 
                     <div class="carousel-item">
                         <div class="cards-wrapper">
-                            <form action="{% url 'offers' %}" class="qw col" method="get">
+                            <form action="{% url 'offers_city' city='Анапа' arrival=arrival departure=departure people=people %}" class="qw col" method="get">
                             <button class="card">
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Anapa.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label"><a href="{% url 'offers' %}">от 2000₽/ночь</a></label>
+                                    <label class="price_label"><a href="{% url 'offers_city' city='Анапа' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label"><a href="{% url 'offers' %}">Анапа</a></label>
+                                    <label class="title_city_label"><a href="{% url 'offers_city' city='Анапа' arrival=arrival departure=departure people=people %}">Анапа</a></label>
                                 </div>
                             </button>
                             </form>
-                            <form action="{% url 'offers' %}" class="qw col" method="get">
+                            <form action="{% url 'offers_city' city='Ростов-на-Дону' arrival=arrival departure=departure people=people %}" class="qw col" method="get">
                             <button class="card">
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Rostov-on-Don.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label"><a href="{% url 'offers' %}">от 2000₽/ночь</a></label>
+                                    <label class="price_label"><a href="{% url 'offers_city' city='Ростов-на-Дону' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label"><a href="{% url 'offers' %}">Ростов-на-Дону</a></label>
+                                    <label class="title_city_label"><a href="{% url 'offers_city' city='Ростов-на-Дону' arrival=arrival departure=departure people=people %}">Ростов-на-Дону</a></label>
                                 </div>
                             </button>
                             </form>
-                            <form action="{% url 'offers' %}" class="qw col" method="get">
+                            <form action="{% url 'offers_city' city='Нижний Новгород' arrival=arrival departure=departure people=people %}" class="qw col" method="get">
                             <button class="card">
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Nizhniy_Novgorod.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label"><a href="{% url 'offers' %}">от 2000₽/ночь</a></label>
+                                    <label class="price_label"><a href="{% url 'offers_city' city='Нижний Новгород' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label"><a href="{% url 'offers' %}">Нижний Новгород</a></label>
+                                    <label class="title_city_label"><a href="{% url 'offers_city' city='Нижний Новгород' arrival=arrival departure=departure people=people %}">Нижний Новгород</a></label>
                                 </div>
                             </button>
                             </form>
-                            <form action="{% url 'offers' %}" class="qw col" method="get">
+                            <form action="{% url 'offers_city' city='Геленджик' arrival=arrival departure=departure people=people %}" class="qw col" method="get">
                             <button class="card">
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Gelendzhik.png' %}">
                                 </div>
                                 <div class="price">
-                                    <label class="price_label"><a href="{% url 'offers' %}">от 2000₽/ночь</a></label>
+                                    <label class="price_label"><a href="{% url 'offers_city' city='Геленджик' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
                                 <div class="title_city">
-                                    <label class="title_city_label"><a href="{% url 'offers' %}">Геленджик</a></label>
+                                    <label class="title_city_label"><a href="{% url 'offers_city' city='Геленджик' arrival=arrival departure=departure people=people %}">Геленджик</a></label>
                                 </div>
                             </button>
                             </form>
@@ -298,36 +299,36 @@
           <label class="email col ps-0">{{user.email}}</label>
         </div>
         <div class="modal-body">
-          <label class="linked_cards col">Привязанные карты</label>
+<!--          <label class="linked_cards col">Привязанные карты</label>-->
           <!-- сущ карта -->
-          <div class="card_card row">
-            <div class="col-5">
-                <div class="card_bank ps-0">
-                    <div class="number">
-                        <label>..2029</label>
-                    </div>
-                    <div class="date_active">
-                        <label>19/02</label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-7 ps-0">
-                <div class="btn_unite">
-                    <button class="untie_it">Отвязать</button>
-                </div>
-            </div>
-          </div>
+<!--          <div class="card_card row">-->
+<!--            <div class="col-5">-->
+<!--                <div class="card_bank ps-0">-->
+<!--                    <div class="number">-->
+<!--                        <label>..2029</label>-->
+<!--                    </div>-->
+<!--                    <div class="date_active">-->
+<!--                        <label>19/02</label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-7 ps-0">-->
+<!--                <div class="btn_unite">-->
+<!--                    <button class="untie_it">Отвязать</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--          </div>-->
           <!-- новая карта -->
-          <div class="card_card row">
-            <div class="col-5">
-                <img src="{% static 'pols/images/add.png' %}">
-            </div>
-            <div class="col-7 ps-0">
-                <div class="btn_unite">
-                    <button class="untie_it">Добавить карту</button>
-                </div>
-            </div>
-          </div>
+<!--          <div class="card_card row">-->
+<!--            <div class="col-5">-->
+<!--                <img src="{% static 'pols/images/add.png' %}">-->
+<!--            </div>-->
+<!--            <div class="col-7 ps-0">-->
+<!--                <div class="btn_unite">-->
+<!--                    <button class="untie_it">Добавить карту</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--          </div>-->
           <!--  -->
           <form class="modal_logout_div d-flex justify-content-center" method="post" action="{% url 'logout' %}?next=/">
               {% csrf_token %}

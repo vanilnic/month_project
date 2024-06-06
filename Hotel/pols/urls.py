@@ -6,11 +6,11 @@ urlpatterns = [
     path('', views.index, name='index'),
 
     path('offers/', views.offers, name='offers'),
-    path('offers/<city>/', views.offers, name='offers_city'),
+    path('offers/<city>/<arrival>/<departure>/<people>/', views.offers, name='offers_city'),
     path('favorites/', views.favorites, name='favorites'),
     path('travel_history/', views.travel_history, name='travel_history'),
     path('hotel/', views.hotel, name='hotel'),
-    path('hotel/<id_hotel_id>/', views.PostDetailView.as_view(), name='hotel_id'),
+    path('hotel/<id_hotel_id>/', views.hotel, name='hotel_id'),
     path('make_an_order/', views.order, name='order'),
     path('payment/', views.payments, name='payment'),
     path('successful_payment/', views.successful_payment, name='succefilly'),

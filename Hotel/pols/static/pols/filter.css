@@ -134,6 +134,7 @@ input:focus {
 }
 .filter{
   /* background-color: #041F27; */
+
   border-radius: 15px;
   border: #0F4757 2px solid;
   margin-bottom: 30px;
@@ -258,6 +259,7 @@ select{
   align-items: end;
 }
 a.hotel_a{
+  white-space: nowrap;
   color: #0F4757 !important;
   font-size: 20px;
   text-decoration: none;
@@ -311,6 +313,9 @@ a:hover{
     width: 120px;
     background-color: #F08A48 !important;
     border: none !important;
+  }
+  .cards_number{
+    margin-bottom: 30px
   }
   .number{
     display: flex;

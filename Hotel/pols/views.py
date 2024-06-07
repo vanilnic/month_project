@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model, authenticate, login
 from django.shortcuts import render, redirect, reverse
 from django.views.generic import DetailView
 from datetime import datetime, timedelta
-from .forms import SignUpForm, SignInForm
+from .forms import *
 from .models import *
 from django import forms
 
@@ -10,6 +10,18 @@ def index(request, title='/'):
     arrival = datetime.now().strftime("%Y-%m-%d")
     departure = (datetime.now() + timedelta(1)).strftime("%Y-%m-%d")
     people = '1 взрослый'
+    try:
+        if request.method == 'POST':
+            print(request.POST['arrival'])
+            print(request.POST['departure'])
+            if request.POST['arrival'] != '':
+                arrival = request.POST['arrival']
+            if request.POST['departure'] != '':
+                departure = request.POST['departure']
+            if request.POST['people'] != '':
+                people = f"{request.POST['people']} взрослый"
+    except:
+        print('123')
     supet_title = '/'
     log_in_people = 3
     if request.method == 'GET':
@@ -48,7 +60,13 @@ def index(request, title='/'):
                     # return redirect('index')
         elif 'search' in request.POST:
             print('123')
-            redirect('offers')
+            print(request.POST['city'])
+            if request.POST['city'] != '':
+                return redirect('offers_city', city=request.POST['city'], arrival=arrival,
+                                departure=departure, people=people)
+            else:
+                return redirect('offers_city', city='Москва', arrival=arrival, departure=departure, people=people)
+            return redirect('offers_city', city=request.POST['city'], arrival=request.POST['arrival'], departure=request.POST['departure'], people=f"{request.POST['people']} взрослый")
 
     else:
         return render(request, 'pols/index.html', {'arrival': arrival, 'departure': departure, 'people': people})
@@ -97,11 +115,24 @@ def offers(request, city, arrival, departure, people):
     else:
         return render(request, 'pols/filter.html')
 
-def favorites(request, title=None):
+def favorites(request, title=None, id_hotel_id=None, city=None, arrival=None, departure=None, people=None, filter=None):
+    favorites = Favorites.objects.all().filter(user=request.user)
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/favorites.html', {'title': title})
+            return render(request, 'pols/favorites.html', {'title': title, 'favorites': favorites})
         return redirect(request.META.get('HTTP_REFERER'))
+
+    if request.POST:
+        if 'back' in request.POST:
+            request.session['return_path'] = request.META.get('HTTP_REFERER','/')
+            print(request.session['return_path'])
+            return redirect(request.session['return_path'])
+            if id_hotel_id:
+                return redirect('hotel_id', id_hotel_id=id_hotel_id)
+            elif city:
+                return redirect('offers_city', city=city, arrival=arrival, departure=departure, people=people)
+            else:
+                return redirect(title)
 
     return render(request, 'pols/favorites.html', {'title': title})
 
@@ -167,6 +198,16 @@ def hotel(request, id_hotel_id=None):
                     # return redirect('index')
             else:
                 return redirect('hotel_id')
+        elif 'addhotel' in request.POST:
+            User = get_user_model()
+            print(1)
+            print(Hotel.objects.get(id=id_hotel_id))
+            print(User.objects.all().filter(email=request.user))
+            price = Rooms.objects.all().filter(hotel=Hotel.objects.get(id=id_hotel_id)).order_by("price_per_night")[0].price_per_night
+            try:
+                print(Favorites.objects.all().filter(hotel = Hotel.objects.get(id=id_hotel_id), user = request.user)[0])
+            except:
+                Favorites(hotel = Hotel.objects.get(id=id_hotel_id), user = request.user, min_price = price).save()
     else:
         return render(request, 'pols/hotel.html')
 

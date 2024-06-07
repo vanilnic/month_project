@@ -29,7 +29,7 @@
                     <img src="{% static 'pols/images/heart_off.png'%}">
                 </div>
                 <div class="favo col-2 ps-3">
-                    <a href="{% url 'favorite' title='offers' %}" class="favorites_label">Избранное</a>
+                    <a href="{% url 'favorite_offers' title='favorite_offers' city=city arrival=arrival departure=departure people=people filter=None %}" class="favorites_label">Избранное</a>
                 </div>
             </div>
             <div class="suitcase col-2 row">
@@ -63,7 +63,8 @@
         
         <div class="container-fluid">
             <div class="content row">
-                <div class="filter col-4">
+                <div class="col-4">
+                <div class="filter">
                     <label class="filter_label">Фильтры: </label>
                     <br>
                     <div class="filters">
@@ -106,6 +107,7 @@
                             <button class="apply">Применить</button>
                         </div>
                     </div>   
+                </div>
                 </div>
                 
                 <div class="cards_number col-8 ps-4">

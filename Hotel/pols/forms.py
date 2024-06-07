@@ -1,4 +1,5 @@
 from django import  forms
+from django.forms import ModelForm
 from .models import User
 from django.core.exceptions import ValidationError
 
@@ -17,3 +18,8 @@ class SignInForm(forms.Form):
     #     if User.objects.filter(username=username).exists():
     #         raise forms.ValidationError('This username is already taken.')
     #     return username
+
+class AddFavorite(ModelForm):
+    class Meta:
+        model = User
+        fields = ['favorites_hotel']

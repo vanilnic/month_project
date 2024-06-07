@@ -31,7 +31,7 @@
                     <img src="{% static 'pols/images/heart_off.png'%}">
                 </div>
                 <div class="favo col-2 ps-3">
-                    <a href="{% url 'favorite' title='hotel' %}" class="favorites_label">Избранное</a>
+                    <a href="{% url 'favorite_hotel' title='hotel_id' id_hotel_id=id_hotel_id %}" class="favorites_label">Избранное</a>
                 </div>
             </div>
             <div class="suitcase col-2 row">
@@ -57,15 +57,22 @@
                         <div class="col-11">
                             <div class="hotel_title">
                                 <label>{{ hotel.name }}</label>
+                                <label>{{ hotel.stars }} ★</label>
                             </div>
-                            <div class="address">
+                            <div class="address row ps-2">
+                                <div class="ramka_main col-1">
+                                    <label>{{ hotel.CSI }}</label>
+                                </div>
+                                <div class="col">
                                 <img src="{% static 'pols/images/geo.png'%}">
                                 <label>{{ hotel.address }}</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="favorites_hotel col-1 pt-1">
-                            <button class="btn_favorites"><img src="{% static 'pols/images/heart_off_max.png' %}"></button>
-                        </div>
+                        <form class="favorites_hotel col-1 pt-1" method="post">
+                            {% csrf_token %}
+                            <button class="btn_favorites" name="addhotel" type="submit"><img src="{% static 'pols/images/heart_off_max.png' %}"></button>
+                        </form>
 
                         <div class="container-fluid">
                             <div class="photoes_hotel row">
@@ -128,13 +135,13 @@
                                         </div>
                                         <div class="carousel-inner">
                                           <div class="carousel-item active">
-                                            <img class="image_room" src="{% static 'pols/images/number_hotel.png' %}">
+                                            <img class="image_room" src="{{ room.img1 }}">
                                           </div>
                                           <div class="carousel-item">
-                                            <img class="image_room" src="{% static 'pols/images/number_hotel.png' %}">
+                                            <img class="image_room" src="{{ room.img2 }}">
                                           </div>
                                           <div class="carousel-item">
-                                            <img class="image_room" src="{% static 'pols/images/number_hotel.png' %}">
+                                            <img class="image_room" src="{{ room.img3 }}">
                                           </div>
                                         </div>
                                     </div>
@@ -150,7 +157,7 @@
                                 <div class="beds_price row">
                                     <div class="beds col-8">
                                         <label>В номере:</label> <br>
-                                        <label>{{ room.beds_amount }} основных места</label>
+                                        <label>{{ room.beds_amount }} основное(ых) место(а)</label>
                                     </div>
                                     <div class="price col-4">
                                         <label class="price_label">от {{ room.price_per_night }} ₽</label>
@@ -166,9 +173,10 @@
                     <!--  -->
                     
                     <div class="info">
+                        {% for hotel in hotels %}
                         <label class="title_info">Про отель</label>
                         <div class="content_info">
-                            <label>Отель в оживленном районе Москвы, рядом с историческими достопримечательностями. Мы предлагаем высокий уровень сервиса, основанный на древних традициях.</label> 
+                            <label>{{ hotel.description }}</label>
                             <label class="conveniences">Удобства номеров:</label> 
                             <ul>
                                 <li>Рабочая зона, Wi-Fi</li>
@@ -178,6 +186,7 @@
                                 <li>Смарт-ТВ, просторные ванные комнаты</li>
                             </ul>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
                 

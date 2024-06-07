@@ -22,18 +22,21 @@
             </div>
             <div class="qw col-1"></div>
             
-            <div class="enter col">
-                <button class="enter_button" onclick="location.href='{% url title %}'">Назад</button>
-            </div>
+            <form class="enter col" method="post">
+                {% csrf_token %}
+                <button class="enter_button" type="submit" name="back">Назад</button>
+            </form>
         </header>
 
         <div class="container-fluid">
             <div class="content row">
                 <div class="cities col-4">
                     <div class="cities_div">
-                        <a class="city" href="#">Все города</a> <br>
+                        <a class="city" href="{% url 'favorite' title=title %}">Все города</a> <br>
                         <!-- Города -->
-                        <a class="city" href="#">Конкретный город</a> <br>
+                        {% for favorite in favorites %}
+                        <a class="city" name="filter">{{ favorite.hotel.city }}</a> <br>
+                        {% endfor %}
                         <!--  -->
                     </div>
                 </div>
@@ -41,15 +44,16 @@
                     <label class="favorites_hotel_label">Избранные отели</label>
                     <div class="line"></div>
                     <!-- Карточка -->
+                    {% for favorite in favorites %}
                     <div class="card">
                         <div class="qw row">
                             <div class="img_hotel col-4">
-                                <img class="photo image_room" src="{% static 'pols/images/card_hotel.png'%}">
+                                <img class="photo image_room" src="{{ favorite.hotel.img1 }}">
                             </div>
                             <div class="info col-8 ps-0">
                                 <div class="title_and_heart row">
                                     <div class="title_hotel col-10">
-                                        <label>Отель Мандаин Москва</label>
+                                        <label>{{ favorite.hotel.name }}</label>
                                     </div>
                                     <div class="heart col-2">
                                         <div class="qw">
@@ -60,15 +64,15 @@
                                 <div class="adres row">
                                     <div class="img_geo col-12">
                                         <img src="{% static 'pols/images/geo.png'%}">
-                                        <label>Москва, Ольховская улица, 23</label>
+                                        <label>{{ favorite.hotel.address }}</label>
                                     </div>
                                 </div>
                                 <div class="ramka">
-                                    <label>4.9</label>
+                                    <label>{{ favorite.hotel.CSI }}</label>
                                 </div>
                                 <div class="price_and_button row">
                                     <div class="price col">
-                                        <label class="price_p">от 2000 ₽</label> <br>
+                                        <label class="price_p">от {{ favorite.min_price }} ₽</label> <br>
                                         <label class="dop">Цена за ночь</label>
                                     </div>
                                     <form class="select col" method="get" action="{% url 'hotel' %}">
@@ -78,6 +82,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                     <!--  -->
                 </div>
             </div>

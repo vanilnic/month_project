@@ -16,5 +16,7 @@ urlpatterns = [
     path('successful_payment/', views.successful_payment, name='succefilly'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('favorites/<title>/', views.favorites, name='favorite'),
+    path('favorites/<title>/<id_hotel_id>/<filter>/', views.favorites, name='favorite_hotel'),
+    path('favorites/<title>/<city>/<arrival>/<departure>/<people>/<filter>/', views.favorites, name='favorite_offers'),
     path('travel_history/<title>/', views.travel_history, name='travels_history'),
 ]

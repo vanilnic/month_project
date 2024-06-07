@@ -30,32 +30,40 @@ class MyUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-class User(AbstractUser):
-    username = models.UUIDField(unique=True, default=uuid.uuid4)
-    email = models.EmailField(unique=True, verbose_name='Почта', null=False, blank=False)
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
-    objects = MyUserManager()
-
 
 class Hotel(models.Model):
     name = models.CharField(max_length=100)
     city = models.CharField(max_length=255, null=True)
     address = models.CharField(max_length=255)
     count_rooms = models.IntegerField()
-    phone = models.CharField(max_length=15, unique=True)
-    email = models.EmailField(unique=True)
     CSI = models.FloatField()
+    stars = models.FloatField(null=True)
+    description = models.TextField(null=True)
     img1 = SizedTextField(size_class=3)
     img2 = SizedTextField(size_class=3)
     img3 = SizedTextField(size_class=3)
     img4 = SizedTextField(size_class=3)
     img5 = SizedTextField(size_class=3)
 
+class User(AbstractUser):
+    username = models.UUIDField(unique=True, default=uuid.uuid4)
+    email = models.EmailField(unique=True, verbose_name='Почта', null=False, blank=False)
+    favorites_hotel = models.ManyToManyField(Hotel, through='Favorites')
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+    objects = MyUserManager()
+
+class Favorites(models.Model):
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    min_price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
+    # date = models.DateField(null=True)
+
 class Rooms(models.Model):
     title = models.CharField(max_length=100)
     beds_amount = models.IntegerField()
     bath_amount = models.IntegerField()
+    s = models.IntegerField(null=True)
     description = models.TextField()
     price_per_night = models.DecimalField(max_digits=10, decimal_places=2)
     img1 = SizedTextField(size_class=3, null=True)

@@ -110,10 +110,10 @@ a.suitcase_label{
     margin-left: 10px;
 }
 .more_photo{
-    padding-left: 9px !important;
+    padding-left: 6px !important;
 }
 .more_photo_2{
-    padding-left: 9px !important;
+    padding-left: 6px !important;
     margin-top: 15px !important;
 }
 /* end header */
@@ -218,6 +218,7 @@ input.search_input:focus {
   font-size: 24px !important;
 }
 .price_label{
+white-space: nowrap;
   display: flex;
   justify-content: right;
   padding-right: 25px !important;

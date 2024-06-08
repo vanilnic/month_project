@@ -29,7 +29,7 @@
                     <img src="{% static 'pols/images/heart_off.png'%}">
                 </div>
                 <div class="favo col-2 ps-3">
-                    <a href="{% url 'favorite' title='index' %}" class="favorites_label">Избранное</a>
+                    <a href="{% url 'favorites' %}" class="favorites_label">Избранное</a>
                 </div>
             </div>
             <div class="suitcase col-2 row">
@@ -38,7 +38,7 @@
                     <img src="{% static 'pols/images/suitcase.png'%}">
                 </div>
                 <div class="favo ps-3 col">
-                    <a href="{% url 'travels_history' title='index' %}" class="suitcase_label">Мои поездки</a>
+                    <a href="{% url 'travel_history' %}" class="suitcase_label">Мои поездки</a>
                 </div>
             </div>
             <div class="enter col">

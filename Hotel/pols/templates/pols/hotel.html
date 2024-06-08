@@ -31,7 +31,7 @@
                     <img src="{% static 'pols/images/heart_off.png'%}">
                 </div>
                 <div class="favo col-2 ps-3">
-                    <a href="{% url 'favorite_hotel' title='hotel_id' id_hotel_id=id_hotel_id %}" class="favorites_label">Избранное</a>
+                    <a href="{% url 'favorites' %}" class="favorites_label">Избранное</a>
                 </div>
             </div>
             <div class="suitcase col-2 row">
@@ -40,7 +40,7 @@
                     <img src="{% static 'pols/images/suitcase.png'%}">
                 </div>
                 <div class="favo ps-3 col">
-                    <a href="{% url 'travels_history' title='hotel' %}" class="suitcase_label">Мои поездки</a>
+                    <a href="{% url 'travel_history' %}" class="suitcase_label">Мои поездки</a>
                 </div>
             </div>
             <div class="enter col">
@@ -108,19 +108,20 @@
         <div class="container-fluid">
             <div class="content row">
                 <div class="search_card_info col-9">
-                    <div class="search d-flex align-items-center">
-                        <input class="date search_input" type="date" min="2024-06-08" max="2024-07-08" placeholder="Заезд">
-                        <input class="date search_input" type="date" min="2024-06-08" max="2024-07-08" placeholder="Выезд">
+                    <form class="search d-flex align-items-center" method="post">
+                        {% csrf_token %}
+                        <input class="date search_input" type="date" min="2024-06-08" max="2024-07-08" placeholder="Заезд" name="arrival" value="{{ arrival }}">
+                        <input class="date search_input" type="date" min="2024-06-08" max="2024-07-08" placeholder="Выезд" name="departure" value="{{ departure }}">
                         <!-- <input class="people search_input" type="text" placeholder="2 взрослых"> -->
-                        <select class="form-select people" aria-label="Пример выбора по умолчанию">
-                            <option selected disabled>Гости</option>
-                            <option value="1">1 взрослый</option>
-                            <option value="2">2 взрослых</option>
-                            <option value="3">3 взрослых</option>
-                            <option value="4">4 взрослых</option>
+                        <select class="form-select people" aria-label="Пример выбора по умолчанию" name="people">
+                            <option selected disabled>{{ people }}</option>
+                            <option value="1 взрослый">1 взрослый</option>
+                            <option value="2 взрослых">2 взрослых</option>
+                            <option value="3 взрослых">3 взрослых</option>
+                            <option value="4 взрослых">4 взрослых</option>
                           </select>
-                        <button class="search_button">Показать номера</button>
-                    </div>
+                        <button class="search_button" name="search" type="submit">Показать номера</button>
+                    </form>
                     <!-- карточка номера -->
                     {% for room in rooms %}
                     <div class="card_number">
@@ -164,7 +165,7 @@
                                     </div>
                                 </div>
                                 <div class="more row">
-                                    <a class="more_a" href="{% url 'order' %}">Подробнее о предложении</a>
+                                    <a class="more_a" href="{% url 'order_add' id_room=room.id arrival=arrival departure=departure people=people %}">Подробнее о предложении</a>
                                 </div>
                             </div>
                         </div>
@@ -192,50 +193,10 @@
                 
                 <div class="similar_estimation col-3 ps-4">
                     <div class="similar">
-                        <label class="similar_label">Похожие отели</label>
+<!--                        <label class="similar_label">Похожие отели</label>-->
                         <div class="hotels">
                         <!-- Карточка похожего отеля -->
-                            <div class="similar_card">
-                                <div class="row">
-                                    <div class=" col-3">
-                                        <img class="image_hotel" src="{% static 'pols/images/volga_hotel.png' %}">
-                                    </div>
-                                    <div class="info_hotel col-9">
-                                        <div class="title_hotel row ps-0">
-                                            <a href="#" class="title_hotel_label ps-1">Исакевский</a>
-                                        </div>
-                                        <div class="reiting_price row">
-                                            <div class="ramka col-3">
-                                                <label class="reiting">4.4</label>
-                                            </div>
-                                            <div class="price_hotel col-10">
-                                                <label class="price_hotel_label">от 1600 ₽</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  -->
-                            <div class="similar_card">
-                                <div class="row">
-                                    <div class=" col-3">
-                                        <img class="image_hotel" src="{% static 'pols/images/volga_hotel.png' %}">
-                                    </div>
-                                    <div class="info_hotel col-9">
-                                        <div class="title_hotel row ps-0">
-                                            <a href="#" class="title_hotel_label ps-1">Исакевский</a>
-                                        </div>
-                                        <div class="reiting_price row">
-                                            <div class="ramka col-3">
-                                                <label class="reiting">4.4</label>
-                                            </div>
-                                            <div class="price_hotel col-10">
-                                                <label class="price_hotel_label">от 1600 ₽</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="estimation">

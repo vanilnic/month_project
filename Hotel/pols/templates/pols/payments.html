@@ -46,61 +46,60 @@
     </div>
 
     <div class="form_payments container-fluid d-flex justify-content-center">
-        <div class="card_payments">
+        <form class="card_payments" method="post">
+            {% csrf_token %}
             <div class="ps-0">
                 <div class="title_hotel">
-                    <label>Отель Мандарин</label>
+                    <label>{{ room.hotel.name }}</label>
                 </div>
                 <div class="title_room">
-                    <label>Семейный однокомнатный номер</label>
+                    <label>{{ room.title }}</label>
                 </div>
-                <div class="services">
-                    <li>Завтрак, обед</li>
-                </div>
+
             </div>
             <div class="date_date">
                 <div class="date">
                     <div class="row">
                         <div class="qw col">
-                            <label class="dd">25 сентября</label> <br>
+                            <label class="dd">{{ arrival }}</label> <br>
                             <label class="tt">с 15:00</label>
                         </div>
                         <div class="tire col-1 ps-1">
                             <label class="dd">—</label>
                         </div>
                         <div class="qw col">
-                            <label class="dd">26 сентября</label> <br>
+                            <label class="dd">{{ departure }}</label> <br>
                             <label class="tt">до 12:00</label>
                         </div>
                     </div>
                 <div class="count_people row">
-                    <label class="people col">2 взрослых</label>
+                    <label class="people col">{{ people }}</label>
                 </div>
             </div>
             </div>
             <div class="itog_price">
                 <label>Итого к оплате:</label>
-                <label class="price">17 990 ₽</label>
+                <label class="price">{{ total_price }} ₽</label>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="info_card">
-                    <input class="card_input card_number" type="text" placeholder="Номер карты">
+                    <input class="card_input card_number" type="text" maxlength="16" placeholder="Номер карты" name="number_card">
                     <div class="pt-3 row">
                         <div class="date_c col">
-                            <input class="card_input card_date" type="text" placeholder="Срок действия">
+                            <input class="card_input card_date" type="date"  placeholder="Срок действия" name="date_card">
                         </div>
                         <div class="cvv col">
-                            <input class="card_input card_cvv" type="text" placeholder="CVV код">
+                            <input class="card_input card_cvv" type="text" maxlength="3" placeholder="CVV код" name="cvv_card">
                         </div>
                     </div>
                 </div>
             </div>
             
-            <form class="button_p" method="get" action="{% url 'succefilly' %}">
-                <button class="pay_btn">Оплатить</button>
-            </form>
+            <div class="button_p">
+                <button class="pay_btn" type="submit">Оплатить</button>
+            </div>
 
-        </div>
+        </form>
     </div>
 </body>
 </html>

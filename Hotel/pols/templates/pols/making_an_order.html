@@ -27,7 +27,7 @@
                     <img src="{% static 'pols/images/heart_off.png'%}">
                 </div>
                 <div class="favo col-2 ps-3">
-                    <a href="{% url 'favorite' title='order' %}" class="favorites_label">Избранное</a>
+                    <a href="{% url 'favorites' %}" class="favorites_label">Избранное</a>
                 </div>
             </div>
             <div class="suitcase col-2 row">
@@ -36,7 +36,7 @@
                     <img src="{% static 'pols/images/suitcase.png'%}">
                 </div>
                 <div class="favo ps-3 col">
-                    <a href="{% url 'travels_history' title='order' %}" class="suitcase_label">Мои поездки</a>
+                    <a href="{% url 'travel_history' %}" class="suitcase_label">Мои поездки</a>
                 </div>
             </div>
             <div class="enter col">
@@ -46,32 +46,34 @@
 
         <div class="container-fluid">
             <div class="content row">
+
                 <div class="main_inf col-8 p-0">
                     <div class="card_order">
+
                         <div class="title_hotel row">
-                            <a class="title_hotel_a" href="{% url 'hotel' %}">Отель Мандарин Москва</a>
+                            <a class="title_hotel_a" href="{% url 'hotel_id_hotel' id_hotel_id=hotel arrival=arrival departure=departure people=people %}">{{ room.hotel.name }}</a>
                         </div>
                         <div class="info row">
                             <div class="title_hotel_info_number col-7">
                                 <div class="reiting_address row ps-2">
                                     <div class="col-1 p-0">
                                         <div class="ramka ">
-                                            <label class="reiting">4.9</label>
+                                            <label class="reiting">{{ room.hotel.CSI }}</label>
                                         </div>
                                     </div>
                                     <div class="address col-11">
-                                        <label class="adres"><img class="geoo" src="{% static 'pols/images/geo.png'%}">Москва, Ольская улица, 23</label>
+                                        <label class="adres"><img class="geoo" src="{% static 'pols/images/geo.png'%}">{{ room.hotel.address }}</label>
                                     </div>
                                 </div>
                                 <div class="title_room">
-                                    <label>Семейный однокомнатный номер</label>
+                                    <label>{{ room.hotel.title }}</label>
                                 </div>
                                 <div class="date">
                                     <div class="row">
                                         <div class="col">
-                                            <label class="dd">25 мая</label>
+                                            <label class="dd">{{ arrival }}</label>
                                             <label class="dd tire">—</label>
-                                            <label class="dd">26 мая</label>
+                                            <label class="dd">{{ departure }}</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -81,7 +83,7 @@
                                             <label class="tt">до 12:00</label>
                                         </div>
                                     </div>
-                                    <label class="people">2 взрослых</label>
+                                    <label class="people">{{ people }}</label>
                                 </div>
                             </div>
                             <div class="photo_date col-5">
@@ -95,13 +97,13 @@
                                             </div>
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active">
-                                                  <img class="order_number_img" src="{% static 'pols/images/order_number.png' %}">
+                                                  <img class="order_number_img" src="{{ room.img1 }}">
                                                 </div>
                                                 <div class="carousel-item">
-                                                  <img class="order_number_img" src="{% static 'pols/images/order_number.png' %}">
+                                                  <img class="order_number_img" src="{{ room.img2 }}">
                                                 </div>
                                                 <div class="carousel-item">
-                                                  <img class="order_number_img" src="{% static 'pols/images/order_number.png' %}">
+                                                  <img class="order_number_img" src="{{ room.img3 }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -116,7 +118,7 @@
                                 <label>Описание номера</label>
                             </div>
                             <div class="number_info">
-                                <label>Уютный двухместный номер категории «Стандарт» – прекрасный вариант для  недорогого, но комфортного размещения двух человек. В таком номере все располагает к комфортному отдыху: продуманный интерьер создает уют, комфортная кровать - 1 двуспальная (160см*200см либо 180см*200см) или две раздельные (90см*200см либо 120см*200см) с современным матрасом обещает крепкий сон.</label>
+                                <label>{{ room.description }}</label>
                             </div>
 
                             <div class="title_number_info">
@@ -140,54 +142,9 @@
                                 </ul>
                             </div>
                         </div>
+
                     </div>
-                    <div class="card_eat">
-                        <div class="title_eat">
-                            <label>Питание</label>
-                        </div>
-                        <div class="select_eat row">
-                            <div class="eat_img col-1">
-                                <img src="{% static 'pols/images/without_eat.png' %}">
-                            </div>
-                            <div class="tit col-5">
-                                <label>Без питания</label>
-                            </div>
-                            <div class="eat_price col-2">
-                                <label>4000 ₽</label>
-                            </div>
-                            <div class="eat_btn col-4">
-                                <button class="eat_button">Выбрать</button>
-                            </div>
-                        </div>
-                        <div class="select_eat row">
-                            <div class="eat_img col-1">
-                                <img src="{% static 'pols/images/bracfast_eat.png' %}">
-                            </div>
-                            <div class="tit col-5">
-                                <label>Завтрак включён</label>
-                            </div>
-                            <div class="eat_price col-2">
-                                <label>6000 ₽</label>
-                            </div>
-                            <div class="eat_btn col-4">
-                                <button class="eat_button">Выбрать</button>
-                            </div>
-                        </div>
-                        <div class="select_eat row">
-                            <div class="eat_img col-1">
-                                <img src="{% static 'pols/images/full_eat.png' %}">
-                            </div>
-                            <div class="tit col-5">
-                                <label>Завтрак, обед и ужин включено</label>
-                            </div>
-                            <div class="eat_price col-2">
-                                <label>12000 ₽</label>
-                            </div>
-                            <div class="eat_btn col-4">
-                                <button class="eat_button">Выбрать</button>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="card_client_info end_str">
                         <div class="title_eat">
                             <label>Данные гостей</label>
@@ -244,19 +201,14 @@
                         </div>
                         <div class="count_nigth_price row">
                             <div class="night col">
-                                <label>1 ночь</label>
+                                <label>{{ days }} ночь(и)</label>
                             </div>
                             <div class="price col">
-                                <label>17990 ₽</label>
+                                <label>{{ total_price }} ₽</label>
                             </div>
                         </div>
-                        <div class="line_div">
-                            <div class="line"></div>
-                        </div>
-                        <div class="eat_itog">
-                            <li><label>Завтрак</label></li>
-                        </div>
-                        <form class="button_itog" method="get" action="{% url 'payment' %}">
+
+                        <form class="button_itog" method="get" action="{% url 'payment_new' id_room=room.id arrival=arrival departure=departure people=people %}">
                             <button class="button_finish">Оплатить</button>
                         </form>
                     </div>

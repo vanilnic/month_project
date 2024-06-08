@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model, authenticate, login
 from django.shortcuts import render, redirect, reverse
 from django.views.generic import DetailView
 from datetime import datetime, timedelta
+from django.db.models import Count
 from .forms import *
 from .models import *
 from django import forms
@@ -56,7 +57,7 @@ def index(request, title='/'):
                 user = authenticate(email=request.POST.get('email_aut'), password=request.POST.get('password_aut'))
                 if user is not None:
                     login(request, user)
-                    return render(request, 'pols/index.html', {'log_in_people': log_in_people, 'supet_title': supet_title, 'title': title})
+                    return redirect('index')
                     # return redirect('index')
         elif 'search' in request.POST:
             print('123')
@@ -71,15 +72,19 @@ def index(request, title='/'):
     else:
         return render(request, 'pols/index.html', {'arrival': arrival, 'departure': departure, 'people': people})
 
-def offers(request, city, arrival, departure, people):
-    rooms = Rooms.objects.all()
+def offers(request, city, arrival, departure, people, orderby='Сортировка'):
+    rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city))
     log_in_people = 3
-    print(city)
+    if orderby == 'Сначала недорогие':
+        rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city)).order_by('price_per_night')
+    elif orderby == 'Сначала дорогие':
+        rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city)).order_by('-price_per_night')
+    print(Hotel.objects.all().filter(city=city))
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/filter.html', {'log_in_people': log_in_people, 'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'people':people})
+            return render(request, 'pols/filter.html', {'log_in_people': log_in_people, 'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'people':people, 'orderby': orderby})
         else:
-            return render(request, 'pols/filter.html', {'rooms': rooms})
+            return render(request, 'pols/filter.html', {'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'people':people, 'orderby': orderby})
 
     if request.method == 'POST':
         if 'register' in request.POST:
@@ -106,43 +111,67 @@ def offers(request, city, arrival, departure, people):
                 user = authenticate(email=request.POST.get('email_aut'), password=request.POST.get('password_aut'))
                 if user is not None:
                     login(request,user)
-                    return render(request,'pols/filter.html', {'log_in_people': log_in_people, 'rooms': rooms})
+                    return redirect('offers_city', city=city, arrival=arrival, departure=departure, people=people)
                     # return redirect('index')
             else:
                 return redirect('offers')
 
+        elif 'search' in request.POST:
+            return redirect('offers_city', city=request.POST['city'], arrival=request.POST['arrival'], departure=request.POST['departure'], people=request.POST['people'])
+
+        elif 'filter_btn' in request.POST:
+            # print(request.POST['min_price'])
+            # print(request.POST['max_price'])
+            # print(request.POST['star'])
+            #print(Hotel.objects.all().filter(stars=request.POST['star']))
+            # rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city), price_per_night__range=(request.POST['min_price'], request.POST['max_price']))
+            if request.POST['star']:
+                if request.POST['min_price'] and request.POST['max_price']:
+                    if request.POST['star']:
+                        rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city), price_per_night__range=(request.POST['min_price'], request.POST['max_price'])).filter(hotel__in=Hotel.objects.all().filter(stars=request.POST['star']))
+                    else:
+                        rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city),
+                                                           price_per_night__range=(
+                                                           request.POST['min_price'], request.POST['max_price']))
+                else:
+                    rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city)).filter(hotel__in=Hotel.objects.all().filter(stars=request.POST['star']))
+            if request.user.is_authenticated:
+                return render(request, 'pols/filter.html', {'log_in_people': log_in_people, 'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'people':people, 'orderby': orderby})
+            else:
+                return render(request, 'pols/filter.html',
+                              {'rooms': rooms, 'city': city, 'arrival': arrival, 'departure': departure,
+                               'people': people, 'orderby': orderby})
 
     else:
         return render(request, 'pols/filter.html')
 
-def favorites(request, title=None, id_hotel_id=None, city=None, arrival=None, departure=None, people=None, filter=None):
+def favorites(request, city=None):
     favorites = Favorites.objects.all().filter(user=request.user)
+    cities = Hotel.objects.all().values('city').annotate(count=Count('id')).values_list('city', flat=True)
+    print(Hotel.objects.all().values('city').annotate(count=Count('id')).values_list('city', flat=True))
+    print(cities)
+    if city is not None:
+        favorites = Favorites.objects.all().filter(user=request.user, hotel__in=Hotel.objects.all().filter(city=city))
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/favorites.html', {'title': title, 'favorites': favorites})
-        return redirect(request.META.get('HTTP_REFERER'))
+            return render(request, 'pols/favorites.html', {'favorites': favorites, 'cities': cities})
+        else:
+            return redirect(request.META.get('HTTP_REFERER'))
 
     if request.POST:
-        if 'back' in request.POST:
-            request.session['return_path'] = request.META.get('HTTP_REFERER','/')
-            print(request.session['return_path'])
-            return redirect(request.session['return_path'])
-            if id_hotel_id:
-                return redirect('hotel_id', id_hotel_id=id_hotel_id)
-            elif city:
-                return redirect('offers_city', city=city, arrival=arrival, departure=departure, people=people)
-            else:
-                return redirect(title)
+        if 'delite' in request.POST:
+            Favorites.objects.filter(id=request.POST['delite']).delete()
 
-    return render(request, 'pols/favorites.html', {'title': title})
+    return render(request, 'pols/favorites.html', {'favorites': favorites, 'cities': cities})
 
-def travel_history(request, title=None):
+def travel_history(request):
+    bookings = Booking.objects.all().filter(user=request.user)
+    print(bookings)
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/history.html', {'title': title})
+            return render(request, 'pols/history.html', {'bookings': bookings})
         return redirect(request.META.get('HTTP_REFERER'))
 
-    return render(request, 'pols/history.html', {'title': title})
 
 
 class PostDetailView(DetailView):
@@ -159,7 +188,7 @@ class PostDetailView(DetailView):
     def get_object(self, queryset=None):
         return Hotel.objects.get(id=self.kwargs['id_hotel_id'])
 
-def hotel(request, id_hotel_id=None):
+def hotel(request, id_hotel_id, arrival, departure, people):
     hotels = Hotel.objects.all().filter(id=id_hotel_id)
     rooms = Rooms.objects.all().filter(hotel=id_hotel_id)
     print(hotels)
@@ -167,9 +196,9 @@ def hotel(request, id_hotel_id=None):
     log_in_people = 3
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms})
+            return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'arrival':arrival, 'departure':departure, 'people':people})
         else:
-            return render(request, 'pols/hotel.html', {'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms})
+            return render(request, 'pols/hotel.html', {'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'arrival':arrival, 'departure':departure, 'people':people})
 
     if request.method == 'POST':
         if 'register' in request.POST:
@@ -207,15 +236,27 @@ def hotel(request, id_hotel_id=None):
             try:
                 print(Favorites.objects.all().filter(hotel = Hotel.objects.get(id=id_hotel_id), user = request.user)[0])
             except:
-                Favorites(hotel = Hotel.objects.get(id=id_hotel_id), user = request.user, min_price = price).save()
+                try:
+                    Favorites(hotel = Hotel.objects.get(id=id_hotel_id), user = request.user, min_price = price).save()
+                    return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'arrival':arrival, 'departure':departure, 'people':people})
+
+                except:
+                    return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'arrival':arrival, 'departure':departure, 'people':people})
+
+        elif 'search' in request.POST:
+            return redirect('hotel_id_hotel', id_hotel_id=id_hotel_id, arrival=request.POST['arrival'], departure=request.POST['departure'], people=request.POST['people'])
     else:
         return render(request, 'pols/hotel.html')
 
-def order(request):
+def order(request, id_room, arrival, departure, people):
     log_in_people = 3
+    room = Rooms.objects.get(id=id_room)
+    days = int(departure[8:]) - int(arrival[8:])
+    total_price = room.price_per_night * days
+    hotel = room.hotel.id
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/making_an_order.html', {'log_in_people': log_in_people})
+            return render(request, 'pols/making_an_order.html', {'log_in_people': log_in_people, 'room': room, 'arrival': arrival, 'departure': departure, 'people': people, 'days': days, 'total_price': total_price, 'hotel': hotel})
 
     if request.method == 'POST':
         if 'register' in request.POST:
@@ -249,11 +290,34 @@ def order(request):
     else:
         return render(request, 'pols/making_an_order.html')
 
-def payments(request):
-    return render(request, 'pols/payments.html')
+def payments(request, id_room, arrival, departure, people):
+    room = Rooms.objects.get(id=id_room)
+    days = int(departure[8:]) - int(arrival[8:])
+    total_price = room.price_per_night * days
+    people = people[:10]
+    people_f = int(''.join(filter(str.isdigit, people)))
+    print(''.join(filter(str.isdigit, people)))
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            return render(request, 'pols/payments.html', {'room': room, 'arrival': arrival, 'departure': departure, 'people': people, 'total_price': total_price})
+    if request.method == 'POST':
+        if len(request.POST['number_card']) == 16 and len(request.POST['cvv_card']) == 3:
+            Booking.objects.create(quantity_people=people_f, arrival=arrival, departure=departure, price_per_room=total_price, user=request.user, room=room)
+            return redirect('succefilly')
+        else:
+            print('lox')
+            return render(request, 'pols/payments.html',
+                          {'room': room, 'arrival': arrival, 'departure': departure, 'people': people,
+                           'total_price': total_price})
+
+        print(len(request.POST['number_card']))
+        print(request.POST['date_card'])
+        print(request.POST['cvv_card'])
 
 def successful_payment(request):
-    return render(request, 'pols/successfully.html')
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            return render(request, 'pols/successfully.html')
 
 # def registrarion(request):
     # if request.method == 'POST':

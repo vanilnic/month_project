@@ -29,7 +29,7 @@
                     <img src="{% static 'pols/images/heart_off.png'%}">
                 </div>
                 <div class="favo col-2 ps-3">
-                    <a href="{% url 'favorite_offers' title='favorite_offers' city=city arrival=arrival departure=departure people=people filter=None %}" class="favorites_label">Избранное</a>
+                    <a href="{% url 'favorites' %}" class="favorites_label">Избранное</a>
                 </div>
             </div>
             <div class="suitcase col-2 row">
@@ -38,7 +38,7 @@
                     <img src="{% static 'pols/images/suitcase.png'%}">
                 </div>
                 <div class="favo ps-3 col">
-                    <a href="{% url 'travels_history' title='offers' %}" class="suitcase_label">Мои поездки</a>
+                    <a href="{% url 'travel_history' %}" class="suitcase_label">Мои поездки</a>
                 </div>
             </div>
             <div class="enter col">
@@ -47,76 +47,67 @@
         </header>
 
         <div class="container-fluid p-0">
-            <div class="search d-flex align-items-center">
-                <input class="city_input" type="text" placeholder="Город" value="{{ city }}">
-                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Заезд" value="{{ arrival }}">
-                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Выезд" value="{{ departure }}">
-                <select class="form-select people" aria-label="Пример выбора по умолчанию" value="{{ people }}">
+            <form class="search d-flex align-items-center" method="post">
+                {% csrf_token %}
+                <input class="city_input" type="text" placeholder="Город" value="{{ city }}" name="city" maxlength="30">
+                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Заезд" value="{{ arrival }}" name="arrival">
+                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Выезд" value="{{ departure }}" name="departure">
+                <select class="form-select people" aria-label="Пример выбора по умолчанию" value="{{ people }}" name="people">
                     <option selected>{{ people }}</option>
-                    <option value="2">2 взрослых</option>
-                    <option value="3">3 взрослых</option>
-                    <option value="4">4 взрослых</option>
+                    <option value="1 взрослый">1 взрослый</option>
+                    <option value="2 взрослых">2 взрослых</option>
+                    <option value="3 взрослых">3 взрослых</option>
+                    <option value="4 взрослых">4 взрослых</option>
                   </select>
-                <button class="search_button">Найти</button>
-            </div>
+                <button class="search_button" type="submit" name="search">Найти</button>
+            </form>
         </div>
         
         <div class="container-fluid">
             <div class="content row">
                 <div class="col-4">
-                <div class="filter">
+                <form class="filter" method="post">
+                    {% csrf_token %}
                     <label class="filter_label">Фильтры: </label>
                     <br>
                     <div class="filters">
                         <label class="filter_price heading">Цена за 1 ночь</label>
                         <div class="between row pt-2">
                             <div class="from col">
-                                <input class="price_input" type="text" placeholder="от 0 ₽">
+                                <input class="price_input" type="text" name="min_price" placeholder="от 0 ₽" maxlength="6">
                             </div>
                             <div class="before col">
-                                <input class="price_input" type="text"  placeholder="до 100 000 ₽">
+                                <input class="price_input" type="text" name="max_price" placeholder="до 100 000 ₽" maxlength="6">
                             </div>
                         </div>
                         <br>
                         <label class="stars heading">Звёздность</label>
                         <div class="cbx_stars pt-2">
-                            <input type="checkbox" name="star"> Без звёзд <br>
-                            <input type="checkbox" name="star"> 1 ★ <br>
-                            <input type="checkbox" name="star"> 2 ★★ <br>
-                            <input type="checkbox" name="star"> 3 ★★★ <br>
-                            <input type="checkbox" name="star"> 4 ★★★★ <br>
-                            <input type="checkbox" name="star"> 5 ★★★★★
+                            <input type="radio" name="star" value="0"> Без звёзд <br>
+                            <input type="radio" name="star" value="1"> 1 ★ <br>
+                            <input type="radio" name="star" value="2"> 2 ★★ <br>
+                            <input type="radio" name="star" value="3"> 3 ★★★ <br>
+                            <input type="radio" name="star" value="4"> 4 ★★★★ <br>
+                            <input type="radio" name="star" value="5"> 5 ★★★★★
                         </div>
                         <br>
-                        <label class="heading">Рейтинг</label> 
-                        <div class="rdo_reiting pt-2">
-                            <input type="radio" name="reiting"> С любым рейтингом <br>
-                            <input type="radio" name="reiting"> от 3 и выше <br>
-                            <input type="radio" name="reiting"> от 4 и выше <br>
-                            <input type="radio" name="reiting"> от 4.5 и выше
-                        </div>
-                        <!-- для доп фильтров -->
-                        <label class="more_filters_label heading pt-4">Фильтр</label> <br>
-                        <div class="more_filters pt-2">
-                            <input type="checkbox" name="more"> Категории
-                        </div>
-                        
-                        <!--  -->
+<!--                        <label class="heading">Рейтинг</label> -->
+
                         <br>
                         <div class="apply_div">
-                            <button class="apply">Применить</button>
+                            <button class="apply" type="submit" name="filter_btn">Применить</button>
                         </div>
                     </div>   
-                </div>
+                </form>
                 </div>
                 
                 <div class="cards_number col-8 ps-4">
                     <div class="custom-select-wrapper">
                         <img class="select_img " src="{% static 'pols/images/sorting.png'%}">
-                        <select class="custom-select" id="primer"><span>qw</span>
-                            <option selected disabled>Сортировка</option>
-                            <option value="str1">Сначала недорогие</option>
-                            <option value="str2">Сначала дорогие</option>
+                        <select class="custom-select" id="pageSelect"><span>qw</span>
+                            <option selected disabled>{{ orderby }}</option>
+                            <option value="{% url 'offers_orderby' city=city arrival=arrival departure=departure people=people orderby='Сначала недорогие' %}">Сначала недорогие</option>
+                            <option value="{% url 'offers_orderby' city=city arrival=arrival departure=departure people=people orderby='Сначала дорогие' %}">Сначала дорогие</option>
                         </select>
                     </div>
                     <!-- карточка номеров -->
@@ -154,9 +145,9 @@
                                 </div>
                                 <div class="hotel_and_button pt-2 row">
                                     <div class="hotel col ps-0">
-                                        <a class="hotel_a " href="{% url 'hotel_id' room.hotel.id %}">{{ room.hotel.name }}</a>
+                                        <a class="hotel_a " href="{% url 'hotel_id_hotel' id_hotel_id=room.hotel.id arrival=arrival departure=departure people=people %}">{{ room.hotel.name }}</a>
                                     </div>
-                                    <form class="select_div col " method="get" action="{% url 'order' %}">
+                                    <form class="select_div col " method="get" action="{% url 'order_add' id_room=room.id arrival=arrival departure=departure people=people %}">
                                         <button class="select_room" >Выбрать</button>
                                     </form>
                                 </div>
@@ -281,6 +272,6 @@
   <!-- конец окна -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+<script src="{% static 'pols/script.js' %}"></script>
 </body>
 </html>

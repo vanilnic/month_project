@@ -22,20 +22,19 @@
             </div>
             <div class="qw col-1"></div>
             
-            <form class="enter col" method="post">
-                {% csrf_token %}
-                <button class="enter_button" type="submit" name="back">Назад</button>
-            </form>
+            <div class="enter col">
+                <button class="enter_button" type="submit" onclick="window.history.back()">Назад</button>
+            </div>
         </header>
 
         <div class="container-fluid">
             <div class="content row">
                 <div class="cities col-4">
                     <div class="cities_div">
-                        <a class="city" href="{% url 'favorite' title=title %}">Все города</a> <br>
+                        <a class="city" href="{% url 'favorites' %}">Все города</a> <br>
                         <!-- Города -->
-                        {% for favorite in favorites %}
-                        <a class="city" name="filter">{{ favorite.hotel.city }}</a> <br>
+                        {% for city in cities %}
+                        <a class="city" href="{% url 'favorite' city %}">{{ city }}</a> <br>
                         {% endfor %}
                         <!--  -->
                     </div>
@@ -56,9 +55,10 @@
                                         <label>{{ favorite.hotel.name }}</label>
                                     </div>
                                     <div class="heart col-2">
-                                        <div class="qw">
-                                            <button class="img_heart"><img  class="heart_heart" src="{% static 'pols/images/heart_on_23.png'%}"></button>
-                                        </div>
+                                        <form class="qw" method="post">
+                                            {% csrf_token %}
+                                            <button class="img_heart" type="submit" name="delite" value="{{ favorite.id }}"><img  class="heart_heart" src="{% static 'pols/images/heart_on_23.png'%}"></button>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="adres row">
@@ -75,7 +75,7 @@
                                         <label class="price_p">от {{ favorite.min_price }} ₽</label> <br>
                                         <label class="dop">Цена за ночь</label>
                                     </div>
-                                    <form class="select col" method="get" action="{% url 'hotel' %}">
+                                    <form class="select col" method="get" action="{% url 'hotel_id' id_hotel_id=favorite.hotel.id %}">
                                         <button class="select_button" name="select_hotel">Выбрать</button>
                                     </form>
                                 </div>

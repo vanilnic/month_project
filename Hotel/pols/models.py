@@ -37,7 +37,7 @@ class Hotel(models.Model):
     address = models.CharField(max_length=255)
     count_rooms = models.IntegerField()
     CSI = models.FloatField()
-    stars = models.FloatField(null=True)
+    stars = models.IntegerField(null=True)
     description = models.TextField(null=True)
     img1 = SizedTextField(size_class=3)
     img2 = SizedTextField(size_class=3)
@@ -82,8 +82,7 @@ class Booking(models.Model):
     arrival = models.DateTimeField()
     departure = models.DateTimeField()
     price_per_room = models.DecimalField(max_digits=10, decimal_places=2)
-    price_per_services = models.DecimalField(max_digits=10, decimal_places=2)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Rooms, on_delete=models.CASCADE)
 

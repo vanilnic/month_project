@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="enter col">
-                <button class="enter_button" onclick="location.href='{% url title %}'">Назад</button>
+                <button class="enter_button" onclick="window.history.back()">Назад</button>
             </div>
         </header>
 
@@ -51,6 +51,7 @@
                 <label class="history_label">История поездок</label>
                 <div class="line"></div>
                 <!-- Карточка отеля -->
+                {% for booking in bookings %}
                 <div class="card">
                     <div class="row">
                         <div class="col-4">
@@ -63,13 +64,13 @@
                                     </div>
                                     <div class="carousel-inner">
                                       <div class="carousel-item active">
-                                        <img class="image_number" src="{% static 'pols/images/number_history.png' %}">
+                                        <img class="image_number" src="{{ booking.room.img1 }}">
                                     </div>
                                       <div class="carousel-item">
-                                        <img class="image_number" src="{% static 'pols/images/number_history.png' %}">
+                                        <img class="image_number" src="{{ booking.room.img2 }}">
                                     </div>
                                       <div class="carousel-item">
-                                        <img class="image_number" src="{% static 'pols/images/number_history.png' %}">
+                                        <img class="image_number" src="{{ booking.room.img3 }}">
                                       </div>
                                     </div>
                                 </div>
@@ -78,43 +79,40 @@
                         <div class="info col-8 ps-0">
                             <div class="hotel_address_date row">
                                 <div class="hotel_address col-8">
-                                    <label class="title_hotel"><a href="#" class="title_hotel">Отель Мандарин Москва</a></label> <br>
+                                    <label class="title_hotel"><a href="#" class="title_hotel">{{ booking.room.hotel.name }}</a></label> <br>
                                     <div class="otstup row">
                                         <div class="ramka col-1">
-                                            <label>4.9</label>
+                                            <label>{{ booking.room.hotel.CSI }}</label>
                                         </div>
                                         <div class="address col-11">
                                             <img src="{% static 'pols/images/geo.png'%}">
-                                            <label>Москва, Ольховская улица, 23</label>
+                                            <label>{{ booking.room.hotel.address }}</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="date col-4">
                                     <label class="date_label">Дата</label>
-                                    <label class="date-date">2024-06-19 — 2024-05-20</label>
+                                    <label class="date-date">{{ booking.arrival }}  —  {{ booking.departure }}</label>
                                 </div>
                             </div>
                             <div class="titlenumber_status row">
                                 <div class="title_number col-8">
-                                    <label>Семейный однокомнатный номер</label>
+                                    <label>{{ booking.room.title }}</label>
                                 </div>
                                 <div class="col-4">
-                                    <div class="status">
-                                        <label>Статус: Завершён</label>
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="price_replace row">
                                 <div class="price col-8">
-                                    <label>Сумма брони: 18 000 ₽</label>
+                                    <label>Сумма брони: {{ booking.price_per_room }} ₽</label>
                                 </div>
-                                <form class="replace col-4" action="{% url 'order' %}" method="get">
-                                    <button class="replace_button">Повторить</button>
-                                </form>
+
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
                 <!--  -->
             </div>
         </div>
